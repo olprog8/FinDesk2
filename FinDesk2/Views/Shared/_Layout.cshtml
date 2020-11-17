@@ -7,7 +7,6 @@
     <title>@ViewData["Title"] - FinDesk2</title>
 
     <partial name="Partial/_Styles" />
-    @await RenderSectionAsync("Styles", false)
 
 </head>
 
@@ -21,7 +20,7 @@
         </main>
     </div>
 
-    <partial name="Partial/_Footer" />
+    @*<partial name="Partial/_Footer" />*@
 
     <partial name="Partial/_Scripts" />
     @RenderSection("Scripts", required: false)

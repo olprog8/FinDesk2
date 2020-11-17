@@ -1,0 +1,23 @@
+﻿@model FinDesk2.Models.Issue
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Issue</title>
+</head>
+<body>
+
+    <h3>Задача №@Model.Id</h3>
+    <p>Описание: @Model.LongDescr</p>
+    <p>Пользователь: @Model.User</p>
+    <p>Дата: @Model.IssueTS</p>
+    <p>Категория: @Model.Category</p>
+    <p>Статус: @Model.Status</p>
+
+    <a href="~/Home/Issues">Задачи</a>
+</body>
+
+</html>
