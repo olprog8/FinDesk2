@@ -1,31 +1,32 @@
 ﻿@model IEnumerable<FinDesk2.Models.Issue>
 
+    <div class="container">
+        <table class="table table-bordered">
+<thead>
+    <tr>
+        <th>Id</th>
+        <th>IssueTime</th>
+        <th>CreateUser</th>
+        <th>Category</th>
+        <th>Status</th>
+        <th></th>
+    </tr>
+</thead>
+            <tbody>
+                @foreach (var issue in Model)
+                {
+                    <tr>
+                        <td>@issue.Id</td>
+                        <td>@issue.IssueTS</td>
+                        <td>@issue.User</td>
+                        <td>@issue.Category</td>
+                        <td>@issue.Status</td>
+                        <td>
+                            <a asp-controller="Home" asp-action="Issue" asp-route-id="@issue.Id">Details</a>
+                        </td>
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width"/>
-    <title>Issues</title>
-</head>
-<body>
-
-    <table>
-        @foreach(var issue in Model)
-        {
-        <tr>
-            <td>@issue.Id</td>
-            <td>@issue.User</td>
-            <td>@issue.IssueTS</td>
-            <td>@issue.Category</td>
-            <td>@issue.Status</td>
-            <td>
-                <a href="~/Home/Issue/@issue.Id">Details</a>
-            </td>
-
-        </tr>
-        }
-    </table>
-</body>
-
-</html>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
