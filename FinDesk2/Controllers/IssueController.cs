@@ -27,6 +27,28 @@ namespace FinDesk2.Controllers
             return View(issue);
         }
 
+        public IActionResult Create()
+        {
+            return View(new Issue());
+
+        }
+
+        [HttpPost]
+        public IActionResult Create(Issue Issue)
+        {
+            if (Issue is null)
+                throw new ArgumentNullException(nameof(Issue));
+
+            if (!ModelState.IsValid)
+                return View(Issue);
+
+            _IssuesData.Add(Issue);
+            _IssuesData.SaveChanges();
+
+            return RedirectToAction("Index");
+
+        }
+
         public IActionResult Edit(int? Id)
         {
             if (Id is null) return View(new Issue());
