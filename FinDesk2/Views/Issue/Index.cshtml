@@ -1,7 +1,41 @@
-﻿
+﻿@model IEnumerable<Issue>
+
 @{
-    ViewData["Title"] = "Issues";
+    //ViewData["Title"] = "Issues";
+    ViewBag.Title = "Issues";
 }
 
-<h2>Index</h2>
+    <div class="container">
+        
+        <h3>@ViewData["Title"]</h3>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>IssueTime</th>
+                    <th>CreateUser</th>
+                    <th>Category</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var issue in Model)
+                {
+                    <tr>
+                        <td>@issue.Id</td>
+                        <td>@issue.IssueTS</td>
+                        <td>@issue.User</td>
+                        <td>@issue.Category</td>
+                        <td>@issue.Status</td>
+                        <td>
+                            <a asp-controller="Issue" asp-action="Details" asp-route-id="@issue.Id">Details</a>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 

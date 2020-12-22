@@ -1,17 +1,17 @@
-﻿@model IEnumerable<FinDesk2.Models.Issue>
+﻿@model IEnumerable<Issue>
 
     <div class="container">
         <table class="table table-bordered">
-<thead>
-    <tr>
-        <th>Id</th>
-        <th>IssueTime</th>
-        <th>CreateUser</th>
-        <th>Category</th>
-        <th>Status</th>
-        <th></th>
-    </tr>
-</thead>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>IssueTime</th>
+                    <th>CreateUser</th>
+                    <th>Category</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
             <tbody>
                 @foreach (var issue in Model)
                 {
@@ -22,7 +22,7 @@
                         <td>@issue.Category</td>
                         <td>@issue.Status</td>
                         <td>
-                            <a asp-controller="Home" asp-action="Issue" asp-route-id="@issue.Id">Details</a>
+                            <a asp-controller="Issue" asp-action="Details" asp-route-id="@issue.Id">Details</a>
                         </td>
 
                     </tr>

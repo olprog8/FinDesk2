@@ -1,0 +1,18 @@
+﻿@model Issue
+
+@{
+    ViewData["Title"] = "Issue#" + Model.Id;
+}
+
+<h3>@ViewData["Title"]</h3>
+
+<div class="container">
+    <h3>Задача №@Model.Id</h3>
+    <p>Описание: @Model.LongDescr</p>
+    <p>Пользователь: @Model.User</p>
+    <p>Дата: @Model.IssueTS</p>
+    <p>Категория: @Model.Category</p>
+    <p>Статус: @Model.Status</p>
+</div>
+<a asp-controller="Issue" asp-action="Index">Задачи</a>
+
