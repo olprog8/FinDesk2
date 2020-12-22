@@ -4,6 +4,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+using FinDesk2.Infrastructure.Interfaces;
+using FinDesk2.Infrastructure.Services;
+
 namespace FinDesk2
 {
     public class Startup
@@ -19,6 +22,8 @@ namespace FinDesk2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+            services.AddSingleton<IIssuesData, InMemoryIssuesData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
