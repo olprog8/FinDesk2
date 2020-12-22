@@ -55,15 +55,17 @@ namespace FinDesk2.Infrastructure.Services
             db_issue.Category = Issue.Category;
             db_issue.LongDescr = Issue.LongDescr;
             db_issue.Status = Issue.Status;
-            db_issue.SolveDescr = Issue.SolveDescr;
             db_issue.SolveTS = Issue.SolveTS;
+            db_issue.SolveDescr = Issue.SolveDescr;
+            db_issue.SolveUser = Issue.SolveUser;
+
 
         }
 
 
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

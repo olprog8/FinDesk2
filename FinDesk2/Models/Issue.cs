@@ -19,6 +19,7 @@ namespace FinDesk2.Models
         //
         public DateTime SolveTS { get; set; }
         public string SolveDescr { get; set; }
+        public string SolveUser { get; set; }
             
     }
 }

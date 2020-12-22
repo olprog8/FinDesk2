@@ -21,6 +21,7 @@ namespace FinDesk2.Data
                 Status = "New",
                 SolveTS = DateTime.Now,
                 SolveDescr = "",
+                SolveUser = "",
             },
             new Issue
             {
@@ -32,6 +33,7 @@ namespace FinDesk2.Data
                 Status = "InProcess",
                 SolveTS = DateTime.Now,
                 SolveDescr = "",
+                SolveUser = "",
             },
             new Issue
             {
@@ -43,6 +45,7 @@ namespace FinDesk2.Data
                 Status = "Solved",
                 SolveTS = DateTime.Now,
                 SolveDescr = "",
+                SolveUser = "",
             },
 
         };

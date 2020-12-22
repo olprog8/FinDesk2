@@ -18,24 +18,29 @@
                 <td>Category</td>
                 <td>Status</td>
                 <td>Solve Time</td>
+                <td>Solver</td>
+                <td></td>
                 <td></td>
             </tr>
         </thead>
         <tbody>
             @foreach (var issue in Model)
             {
-                <tr>
-                    <td>@issue.Id</td>
-                    <td>@issue.IssueTS</td>
-                    <td>@issue.User</td>
-                    <td>@issue.Category</td>
-                    <td>@issue.Status</td>
-                    <td>@issue.SolveTS</td>
-                    <td>
-                        <a asp-controller="Issue" asp-action="Details" asp-route-id="@issue.Id">Details</a>
-                    </td>
-
-                </tr>
+            <tr>
+                <td>@issue.Id</td>
+                <td>@issue.IssueTS</td>
+                <td>@issue.User</td>
+                <td>@issue.Category</td>
+                <td>@issue.Status</td>
+                <td>@issue.SolveTS</td>
+                <td>@issue.SolveUser</td>
+                <td>
+                    <a asp-controller="Issue" asp-action="Details" asp-route-id="@issue.Id">Details</a>
+                </td>
+                <td>
+                    <a asp-controller="Issue" asp-action="Edit" asp-route-id="@issue.Id">Edit</a>
+                </td>
+            </tr>
             }
         </tbody>
     </table>
@@ -50,10 +55,6 @@
     }
 
     @section Scripts{
-        <!--<script>
-            TestScripts
-        </script>
-        -->
-}
+        <!--<script>TestScripts</script>-->
+    }
 
-}
