@@ -20,6 +20,8 @@ namespace FinDesk2.Controllers
                 Category = "Sun",
                 LongDescr = "Не могу зайти в SUN",
                 Status = "New",
+                SolveTS = DateTime.Now,
+                SolveDescr = "",
             },
             new Issue
             {
@@ -28,7 +30,9 @@ namespace FinDesk2.Controllers
                 IssueTS = DateTime.Now,
                 Category = "1c Duty",
                 LongDescr = "Не работает отчет",
-                Status = "InProcess"
+                Status = "InProcess",
+                SolveTS = DateTime.Now,
+                SolveDescr = "",
             },
             new Issue
             {
@@ -37,7 +41,9 @@ namespace FinDesk2.Controllers
                 IssueTS = DateTime.Now,
                 Category = "1c Cash",
                 LongDescr = "Не может зайти в 1с",
-                Status = "Solved"
+                Status = "Solved",
+                SolveTS = DateTime.Now,
+                SolveDescr = "",
             },
 
         };

@@ -5,37 +5,55 @@
     ViewBag.Title = "Issues";
 }
 
-    <div class="container">
-        
-        <h3>@ViewData["Title"]</h3>
+<div class="container">
 
-        <table class="table table-bordered">
-            <thead>
+    <h3>@ViewData["Title"]</h3>
+
+    <table class="table table-bordered" id="st_issue_table">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>Issue Time</td>
+                <td>Creater</td>
+                <td>Category</td>
+                <td>Status</td>
+                <td>Solve Time</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var issue in Model)
+            {
                 <tr>
-                    <th>Id</th>
-                    <th>IssueTime</th>
-                    <th>CreateUser</th>
-                    <th>Category</th>
-                    <th>Status</th>
-                    <th></th>
+                    <td>@issue.Id</td>
+                    <td>@issue.IssueTS</td>
+                    <td>@issue.User</td>
+                    <td>@issue.Category</td>
+                    <td>@issue.Status</td>
+                    <td>@issue.SolveTS</td>
+                    <td>
+                        <a asp-controller="Issue" asp-action="Details" asp-route-id="@issue.Id">Details</a>
+                    </td>
+
                 </tr>
-            </thead>
-            <tbody>
-                @foreach (var issue in Model)
-                {
-                    <tr>
-                        <td>@issue.Id</td>
-                        <td>@issue.IssueTS</td>
-                        <td>@issue.User</td>
-                        <td>@issue.Category</td>
-                        <td>@issue.Status</td>
-                        <td>
-                            <a asp-controller="Issue" asp-action="Details" asp-route-id="@issue.Id">Details</a>
-                        </td>
+            }
+        </tbody>
+    </table>
+</div>
 
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+@section Styles{
+    <style>
+        #st_issue_table {
+            background: yellow;
+        }
+    </style>
+}
 
+@section Scripts{
+    <!--<script>
+        TestScripts
+    </script>
+    -->
+}
+
+}

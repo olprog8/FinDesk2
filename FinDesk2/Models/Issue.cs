@@ -16,7 +16,9 @@ namespace FinDesk2.Models
 
         public string Status { get; set; }
 
-        //public DateTime SolveTS { get; set; }
+        //
+        public DateTime SolveTS { get; set; }
+        public string SolveDescr { get; set; }
             
     }
 }

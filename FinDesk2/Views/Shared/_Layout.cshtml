@@ -6,12 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - FinDesk2</title>
 
+    @*Стили*@
     <partial name="Partial/_Styles" />
+    @RenderSection("Styles", required: false)
 
 </head>
 
 <body>
 
+    @*Заголовок*@
     <partial name="Partial/_Header" />
 
     <div class="container">
@@ -20,8 +23,10 @@
         </main>
     </div>
 
+    @*Подвал*@
     @*<partial name="Partial/_Footer" />*@
 
+    @*Скрипты*@
     <partial name="Partial/_Scripts" />
     @RenderSection("Scripts", required: false)
 
