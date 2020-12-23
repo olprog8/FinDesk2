@@ -4,6 +4,6 @@
     public interface IOrderedEntity: IBaseEntity
     {
         /// <summary>Порядковый номер/// </summary>
-        public int Order { get; set; }
+        int Order { get; set; }
     }
 }
