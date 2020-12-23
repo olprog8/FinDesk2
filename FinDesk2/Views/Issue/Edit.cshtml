@@ -1,4 +1,4 @@
-﻿@model Issue
+﻿@model IssueViewModel
 
 @{
     ViewData["Title"] = "Редактирование " + Model.Id;
@@ -21,42 +21,42 @@
                     <div class="form-group">
                         <label asp-for="User"></label>
                         <input asp-for="User" class="form-control" />
-                        <span asp-validation-for="User"></span>
+                        <span asp-validation-for="User" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="IssueTS"></label>
                         <input asp-for="IssueTS" class="form-control" />
-                        <span asp-validation-for="IssueTS"></span>
+                        <span asp-validation-for="IssueTS" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Category"></label>
                         <input asp-for="Category" class="form-control" />
-                        <span asp-validation-for="Category"></span>
+                        <span asp-validation-for="Category" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="LongDescr"></label>
                         <input asp-for="LongDescr" class="form-control" />
-                        <span asp-validation-for="LongDescr"></span>
+                        <span asp-validation-for="LongDescr" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Status"></label>
                         <input asp-for="Status" class="form-control" />
-                        <span asp-validation-for="Status"></span>
+                        <span asp-validation-for="Status" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="SolveTS"></label>
                         <input asp-for="SolveTS" class="form-control" />
-                        <span asp-validation-for="SolveTS"></span>
+                        <span asp-validation-for="SolveTS" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="SolveDescr"></label>
                         <input asp-for="SolveDescr" class="form-control" />
-                        <span asp-validation-for="SolveDescr"></span>
+                        <span asp-validation-for="SolveDescr" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="SolveUser"></label>
                         <input asp-for="SolveUser" class="form-control" />
-                        <span asp-validation-for="SolveUser"></span>
+                        <span asp-validation-for="SolveUser" class="text-danger"></span>
                     </div>
                     <div>
                         <input type="submit" value="Сохранить" class="btn btn-default" />
