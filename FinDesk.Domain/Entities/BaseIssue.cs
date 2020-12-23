@@ -1,27 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace FinDesk2.Models
+using FinDesk.Domain.Entities.Base.Interfaces;
+
+namespace FinDesk.Domain.Entities
 {
-    public class Issue
+    public class BaseIssue: IBaseEntity
     {
         public int Id { get; set; }
         public string User { get; set; }
 
         public DateTime IssueTS { get; set; }
-        
-        public string IssueType { get; set; }
-        public string Category { get; set; }
+
+        public int IssueTypeId { get; set; }
+        public int CategoryId { get; set; }
         public string LongDescr { get; set; }
 
-        public string Status { get; set; }
+        public int IssueStatusId { get; set; }
 
         //
         public DateTime SolveTS { get; set; }
         public string SolveDescr { get; set; }
         public string SolveUser { get; set; }
-            
     }
 }

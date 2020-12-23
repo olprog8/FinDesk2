@@ -23,6 +23,10 @@ namespace FinDesk2.ViewModels
         [Required(ErrorMessage = "<Дата Создания> является обязательным")]
         public DateTime IssueTS { get; set; }
 
+        [Display(Name = "Тип Инцидента")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "<ТипИнцидента> является обязательным")]
+        public string IssueType { get; set; }
+
         [Display(Name = "Категория")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "<Категория> является обязательным")]
         public string Category { get; set; }

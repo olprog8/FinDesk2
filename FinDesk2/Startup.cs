@@ -24,6 +24,8 @@ namespace FinDesk2
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
             services.AddSingleton<IIssuesData, InMemoryIssuesData>();
+
+            services.AddSingleton<ICategoryData, InMemoryCategoryData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

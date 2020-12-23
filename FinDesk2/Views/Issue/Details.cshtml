@@ -1,7 +1,7 @@
 ﻿@model IssueViewModel
 
 @{
-    ViewData["Title"] = "Issue#" + Model.Id;
+    ViewData["Title"] = "Issue #" + Model.Id;
 }
 
 <h3>@ViewData["Title"]</h3>
@@ -11,6 +11,7 @@
     <p>Описание: @Model.LongDescr</p>
     <p>Пользователь: @Model.User</p>
     <p>Дата: @Model.IssueTS</p>
+    <p>ТипИнцидента: @Model.IssueType</p>
     <p>Категория: @Model.Category</p>
     <p>Статус: @Model.Status</p>
     <p>Дата Решения: @Model.SolveTS</p>

@@ -17,11 +17,16 @@
 
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <input asp-for="Id" type="hidden" />
-                    
+
                     <div class="form-group">
                         <label asp-for="User"></label>
                         <input asp-for="User" class="form-control" />
                         <span asp-validation-for="User" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="IssueType"></label>
+                        <input asp-for="IssueType" class="form-control" />
+                        <span asp-validation-for="IssueType" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="IssueTS"></label>
