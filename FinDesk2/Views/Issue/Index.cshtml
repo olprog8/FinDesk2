@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Issue>
+﻿@model IEnumerable<IssueViewModel>
 
 @{
     //ViewData["Title"] = "Issues";
@@ -24,6 +24,7 @@
                 <td>Solver</td>
                 <td></td>
                 <td></td>
+                <td></td>
             </tr>
         </thead>
         <tbody>
@@ -42,6 +43,9 @@
                 </td>
                 <td>
                     <a asp-controller="Issue" asp-action="Edit" asp-route-id="@issue.Id">Edit</a>
+                </td>
+                <td>
+                    <a asp-controller="Issue" asp-action="Delete" asp-route-id="@issue.Id" class="text-danger">Delete</a>
                 </td>
             </tr>
             }
