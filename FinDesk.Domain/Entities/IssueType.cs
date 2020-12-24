@@ -10,5 +10,7 @@ namespace FinDesk.Domain.Entities
     public class IssueType: NamedEntity, IOrderedEntity
     {
         public int Order { get; set; }
+
+        public virtual ICollection<BaseIssue> BaseIssues { get; set; }
     }
 }
