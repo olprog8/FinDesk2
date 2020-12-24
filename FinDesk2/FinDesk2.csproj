@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FinDesk.DAL\FinDesk.DAL.csproj" />
     <ProjectReference Include="..\FinDesk.Domain\FinDesk.Domain.csproj" />
   </ItemGroup>
 
