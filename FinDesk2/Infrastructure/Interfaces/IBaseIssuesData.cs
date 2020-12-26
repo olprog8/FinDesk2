@@ -7,7 +7,7 @@ using FinDesk.Domain.Entities;
 
 namespace FinDesk2.Infrastructure.Interfaces
 {
-    public interface ICategoryData
+    public interface IBaseIssuesData
     {
         /// <summary>
         /// Получить все категории

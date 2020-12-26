@@ -12,6 +12,8 @@ using FinDesk.DAL.Context;
 
 using FinDesk2.Data;
 
+using FinDesk2.Infrastructure.Services.InSQL;
+
 
 namespace FinDesk2
 {
@@ -36,7 +38,8 @@ namespace FinDesk2
 
             services.AddSingleton<IIssuesData, InMemoryIssuesData>();
 
-            services.AddSingleton<ICategoryData, InMemoryCategoryData>();
+            //services.AddSingleton<IBaseIssuesData, InMemoryBaseIssuesData>();
+            services.AddScoped<IBaseIssuesData, SQLBaseIssuesData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

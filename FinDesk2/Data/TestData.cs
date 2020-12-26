@@ -99,11 +99,12 @@ namespace FinDesk2.Data
         };
         public static IEnumerable<Category> Categories { get; } = new[]
             {
-            new Category{Id = 1, Name = "1C", Order = 0, ParentId = 0 },
-            new Category{Id = 2, Name = "Sun", Order = 1, ParentId = 0 },
-            new Category{Id = 3, Name = "Other", Order = 2, ParentId = 0 },
+            new Category{Id = 1, Name = "1C", Order = 0},
+            new Category{Id = 2, Name = "InforSystems", Order = 1},
+            new Category{Id = 3, Name = "Other", Order = 2},
             new Category{Id = 4, Name = "1CCash", Order = 3, ParentId = 1 },
             new Category{Id = 5, Name = "Vision", Order = 4, ParentId = 2 },
+            new Category{Id = 6, Name = "Vision", Order = 5, ParentId = 2 },
             };
 
         public static IEnumerable<IssueStatus> IssueStatuses { get; } = new[]

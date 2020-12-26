@@ -10,7 +10,7 @@ using FinDesk.Domain.Entities;
 
 namespace FinDesk2.Infrastructure.Services
 {
-    public class InMemoryCategoryData : ICategoryData
+    public class InMemoryBaseIssuesData : IBaseIssuesData
     {
         public IEnumerable<Category> GetCategories() => TestData.Categories;
         

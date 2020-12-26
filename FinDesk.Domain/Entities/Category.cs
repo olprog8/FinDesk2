@@ -11,7 +11,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FinDesk.Domain.Entities
 {
-    //[Table("Brand")]
+    //[Table("Section")]
     public class Category : NamedEntity, IOrderedEntity
     {
         //[Table("Categories")]
