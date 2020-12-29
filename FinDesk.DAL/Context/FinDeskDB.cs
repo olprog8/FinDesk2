@@ -6,9 +6,14 @@ using Microsoft.EntityFrameworkCore;
 
 using FinDesk.Domain.Entities;
 
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
+using Findesk.Domain.Identity;
+
+
 namespace FinDesk.DAL.Context
 {
-    public class FinDeskDB: DbContext
+    public class FinDeskDB: IdentityDbContext<User, Role, string>
     {
         public DbSet<BaseIssue> BaseIssues { get; set; }
 

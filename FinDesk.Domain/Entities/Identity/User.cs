@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.AspNetCore.Identity;
 
 
-namespace WebStore1p.Domain.Identity
+namespace Findesk.Domain.Identity
 {
     public class User : IdentityUser
     {
