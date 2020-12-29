@@ -12,6 +12,7 @@ namespace WebStore1p.Controllers
 {
     public class AccountController : Controller
     {
+
         private readonly UserManager<User> _UserManager;
         private readonly SignInManager<User> _SignInManager;
         public AccountController(UserManager<User> UserManager, SignInManager<User> SignInManager)
@@ -19,6 +20,8 @@ namespace WebStore1p.Controllers
             _UserManager = UserManager;
             _SignInManager = SignInManager;
         }
+
+
 
         #region Регистрация пользователя в системе
         public IActionResult Register() => View(new RegisterUserViewModel());
