@@ -14,6 +14,11 @@ using FinDesk2.Data;
 
 using FinDesk2.Infrastructure.Services.InSQL;
 
+using FinDesk.Domain.Identity;
+using Microsoft.AspNetCore.Identity;
+
+using System;
+
 
 namespace FinDesk2
 {
@@ -40,6 +45,43 @@ namespace FinDesk2
 
             //services.AddSingleton<IBaseIssuesData, InMemoryBaseIssuesData>();
             services.AddScoped<IBaseIssuesData, SQLBaseIssuesData>();
+
+            services.AddIdentity<User, Role>()
+                .AddEntityFrameworkStores<FinDeskDB>()
+                .AddDefaultTokenProviders();
+
+            services.Configure<IdentityOptions>(opt =>
+            {
+                opt.Password.RequiredLength = 3;
+                opt.Password.RequireDigit = false;
+                opt.Password.RequireUppercase = false;
+                opt.Password.RequireLowercase = true;
+                opt.Password.RequireNonAlphanumeric = false;
+                opt.Password.RequiredUniqueChars = 3;
+
+                //opt.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxABCD...1234567890";
+                opt.User.RequireUniqueEmail = false;
+
+                opt.Lockout.AllowedForNewUsers = true;
+                opt.Lockout.MaxFailedAccessAttempts = 10;
+                opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
+            });
+
+            services.ConfigureApplicationCookie(opt =>
+            {
+                opt.Cookie.Name = "FinDesk";
+                opt.Cookie.HttpOnly = true;
+                //opt.Cookie.Expiration = TimeSpan.FromDays(10); - уже неподдерживается в 3.1
+                opt.ExpireTimeSpan = TimeSpan.FromDays(10);
+
+                //L6 1.10 Identity Пути по которым система будет перенаправлять неавторизованных пользователей на контроллер Account, действие Login
+                opt.LoginPath = "/Account/Login";
+                opt.LogoutPath = "/Account/Logout";
+                opt.AccessDeniedPath = "/Account/AccessDenied";
+
+                opt.SlidingExpiration = true; //L6 ПШ Параметр который заставит систему автоматически подменять идентификатор сессии пользователя, как он авторизовался
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,6 +105,8 @@ namespace FinDesk2
 
             app.UseRouting();
 
+            //L6 1.14 добавили Identity промежуточное ПО
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

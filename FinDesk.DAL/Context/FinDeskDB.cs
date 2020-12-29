@@ -8,7 +8,7 @@ using FinDesk.Domain.Entities;
 
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-using Findesk.Domain.Identity;
+using FinDesk.Domain.Identity;
 
 
 namespace FinDesk.DAL.Context
