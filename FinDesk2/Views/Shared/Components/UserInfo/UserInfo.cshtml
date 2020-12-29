@@ -19,6 +19,6 @@
         <li><a asp-controller="Employees" asp-action="Index">Сотрудники</a></li>
         <li><a asp-controller="Issue" asp-action="Index">Issues</a></li>
         <li><a asp-controller="Account" asp-action="Logout">Выход</a></li>
-        <li><a asp-controller="Account" asp-action="Register">Профиль</a></li>
+        <li><a asp-controller="Account" asp-action="Profile">@User.Identity.Name</a></li>
     </ul>
 </div>

@@ -74,7 +74,7 @@ namespace WebStore1p.Controllers
                 Model.UserName,
                 Model.Password,
                 Model.RememberMe,
-                false //Не хотим блокировать пользователя если он накосячил со вводом пароля 10 раз
+                false //!!!Не хотим блокировать пользователя если он накосячил со вводом пароля 10 раз
                 );
 
 
