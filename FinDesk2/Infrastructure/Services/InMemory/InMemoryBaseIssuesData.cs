@@ -32,5 +32,6 @@ namespace FinDesk2.Infrastructure.Services
 
             return query;
         }
-    }
+
+        public BaseIssue GetIssueById(int id) => TestData.BaseIssues.FirstOrDefault(p => p.Id == id)
 }

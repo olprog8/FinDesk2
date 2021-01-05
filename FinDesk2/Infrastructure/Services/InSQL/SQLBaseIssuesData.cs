@@ -45,5 +45,16 @@ namespace FinDesk2.Infrastructure.Services.InSQL
 
             return query.AsEnumerable();
         }
+
+        /// <summary>
+        /// Реаллизация получения Issue из SQL
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public BaseIssue GetIssueById(int id) => _db.BaseIssues
+            .Include(p => p.Category)
+            .Include(p => p.IssueStatus)
+            .Include(p => p.IssueType)
+            .FirstOrDefault(p => p.Id == id);
     }
 }

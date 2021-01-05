@@ -19,6 +19,12 @@ namespace FinDesk2.Infrastructure.Interfaces
 
         IEnumerable<BaseIssue> GetBaseIssues(BaseIssueFilter Filter = null);
 
+        /// <summary>
+        /// Получить Запрос по идентификатору
+        /// </summary>
+        /// <param name="id">Идентификатор требуемого Запроса</param>
+        /// <returns>Запрос(Issue)</returns>
+        BaseIssue GetIssueById(int id);
 
 
     }
