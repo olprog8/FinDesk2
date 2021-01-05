@@ -9,8 +9,13 @@ using FinDesk2.Models;
 using FinDesk2.Infrastructure.Mapping;
 using FinDesk2.ViewModels;
 
+using Microsoft.AspNetCore.Authorization;
+
+using FinDesk.Domain.Identity;
+
 namespace FinDesk2.Controllers
 {
+    [Authorize]
     public class IssueController : Controller
     {
         private readonly IIssuesData _IssuesData;
@@ -29,13 +34,15 @@ namespace FinDesk2.Controllers
             return View(issue.ToViewModel());
         }
 
+        [Authorize(Roles = Role.Administrator)]
         public IActionResult Create()
         {
             return View(new IssueViewModel());
 
         }
 
-        [HttpPost]
+        [Authorize(Roles = Role.Administrator)]
+        [HttpPost, ValidateAntiForgeryToken]
         public IActionResult Create(IssueViewModel Issue)
         {
             if (Issue is null)
@@ -51,6 +58,7 @@ namespace FinDesk2.Controllers
 
         }
 
+        [Authorize(Roles = Role.Administrator)]
         public IActionResult Edit(int? Id)
         {
             if (Id is null) return View(new IssueViewModel());
@@ -67,7 +75,7 @@ namespace FinDesk2.Controllers
         }
 
         //Ответная часть. То, что происходит после нажатия кнопки Сохранить. В качестве параметра обычно указывается ViewModel
-        [HttpPost]
+        [HttpPost, ValidateAntiForgeryToken]
         public IActionResult Edit(IssueViewModel Issue)
         {
             if (Issue is null)
@@ -87,6 +95,7 @@ namespace FinDesk2.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = Role.Administrator)]
         public IActionResult Delete(int id)
         {
             if (id <= 0) return BadRequest();
@@ -100,6 +109,7 @@ namespace FinDesk2.Controllers
 
         }
 
+        [Authorize(Roles = Role.Administrator)]
         public IActionResult DeleteConfirmed(int id)
         {
             _IssuesData.Delete(id);

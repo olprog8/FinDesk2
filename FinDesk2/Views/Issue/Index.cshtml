@@ -5,55 +5,66 @@
     ViewBag.Title = "Issues";
 }
 
-<div class="container">
+    <div class="container">
 
-    <h3>@ViewData["Title"]</h3>
+        <h3>@ViewData["Title"]</h3>
 
-    <a asp-action="Edit" class="btn btn-success">Создать через Edit</a>
-    <a asp-action="Create" class="btn btn-success">Создать через Create</a>
+        @if (User.IsInRole(FinDesk.Domain.Identity.Role.Administrator))
+        {
+            <a asp-action="Edit" class="btn btn-success">Создать через Edit</a>
+            <a asp-action="Create" class="btn btn-success">Создать через Create</a>
+        }
 
-    <table class="table table-bordered" id="st_issue_table">
-        <thead>
-            <tr>
-                <td>Id</td>
-                <td>Issue Time</td>
-                <td>Creater</td>
-                <td>Type</td>
-                <td>Category</td>
-                <td>Status</td>
-                <td>Solve Time</td>
-                <td>Solver</td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var issue in Model)
-            {
-            <tr>
-                <td>@issue.Id</td>
-                <td>@issue.IssueTS</td>
-                <td>@issue.User</td>
-                <td>@issue.IssueType</td>
-                <td>@issue.Category</td>
-                <td>@issue.Status</td>
-                <td>@issue.SolveTS</td>
-                <td>@issue.SolveUser</td>
-                <td>
-                    <a asp-controller="Issue" asp-action="Details" asp-route-id="@issue.Id">Details</a>
-                </td>
-                <td>
-                    <a asp-controller="Issue" asp-action="Edit" asp-route-id="@issue.Id">Edit</a>
-                </td>
-                <td>
-                    <a asp-controller="Issue" asp-action="Delete" asp-route-id="@issue.Id" class="text-danger">Delete</a>
-                </td>
-            </tr>
-            }
-        </tbody>
-    </table>
-</div>
+        <table class="table table-bordered" id="st_issue_table">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Issue Time</td>
+                    <td>Creater</td>
+                    <td>Type</td>
+                    <td>Category</td>
+                    <td>Status</td>
+                    <td>Solve Time</td>
+                    <td>Solver</td>
+                    <td></td>
+
+                    @if (User.IsInRole(FinDesk.Domain.Identity.Role.Administrator))
+                    {
+                        <td></td>
+                        <td></td>
+                    }
+                    </tr>
+            </thead>
+            <tbody>
+                @foreach (var issue in Model)
+                {
+                <tr>
+                    <td>@issue.Id</td>
+                    <td>@issue.IssueTS</td>
+                    <td>@issue.User</td>
+                    <td>@issue.IssueType</td>
+                    <td>@issue.Category</td>
+                    <td>@issue.Status</td>
+                    <td>@issue.SolveTS</td>
+                    <td>@issue.SolveUser</td>
+                    <td>
+                        <a asp-controller="Issue" asp-action="Details" asp-route-id="@issue.Id">Details</a>
+                    </td>
+                    @if (User.IsInRole(FinDesk.Domain.Identity.Role.Administrator))
+                    {
+
+                        <td>
+                            <a asp-controller="Issue" asp-action="Edit" asp-route-id="@issue.Id">Edit</a>
+                        </td>
+                        <td>
+                            <a asp-controller="Issue" asp-action="Delete" asp-route-id="@issue.Id" class="text-danger">Delete</a>
+                        </td>
+                    }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 
     @section Styles{
         <style>

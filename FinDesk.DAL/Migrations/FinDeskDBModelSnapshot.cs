@@ -129,7 +129,7 @@ namespace FinDesk.DAL.Migrations
                     b.ToTable("IssueTypes");
                 });
 
-            modelBuilder.Entity("Findesk.Domain.Identity.Role", b =>
+            modelBuilder.Entity("FinDesk.Domain.Identity.Role", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -156,7 +156,7 @@ namespace FinDesk.DAL.Migrations
                     b.ToTable("AspNetRoles");
                 });
 
-            modelBuilder.Entity("Findesk.Domain.Identity.User", b =>
+            modelBuilder.Entity("FinDesk.Domain.Identity.User", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -355,7 +355,7 @@ namespace FinDesk.DAL.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
-                    b.HasOne("Findesk.Domain.Identity.Role", null)
+                    b.HasOne("FinDesk.Domain.Identity.Role", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -364,7 +364,7 @@ namespace FinDesk.DAL.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Findesk.Domain.Identity.User", null)
+                    b.HasOne("FinDesk.Domain.Identity.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -373,7 +373,7 @@ namespace FinDesk.DAL.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Findesk.Domain.Identity.User", null)
+                    b.HasOne("FinDesk.Domain.Identity.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -382,13 +382,13 @@ namespace FinDesk.DAL.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
-                    b.HasOne("Findesk.Domain.Identity.Role", null)
+                    b.HasOne("FinDesk.Domain.Identity.Role", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Findesk.Domain.Identity.User", null)
+                    b.HasOne("FinDesk.Domain.Identity.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -397,7 +397,7 @@ namespace FinDesk.DAL.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Findesk.Domain.Identity.User", null)
+                    b.HasOne("FinDesk.Domain.Identity.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

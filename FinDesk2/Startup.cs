@@ -37,15 +37,6 @@ namespace FinDesk2
             //Подключение к БД
             services.AddDbContext<FinDeskDB>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddTransient<FinDeskDBInitializer>();
-
-            services.AddControllersWithViews().AddRazorRuntimeCompilation();
-
-            services.AddSingleton<IIssuesData, InMemoryIssuesData>();
-
-            //services.AddSingleton<IBaseIssuesData, InMemoryBaseIssuesData>();
-            services.AddScoped<IBaseIssuesData, SQLBaseIssuesData>();
-
             services.AddIdentity<User, Role>()
                 .AddEntityFrameworkStores<FinDeskDB>()
                 .AddDefaultTokenProviders();
@@ -81,6 +72,16 @@ namespace FinDesk2
 
                 opt.SlidingExpiration = true; //L6 ПШ Параметр который заставит систему автоматически подменять идентификатор сессии пользователя, как он авторизовался
             });
+
+            services.AddTransient<FinDeskDBInitializer>();
+
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+            services.AddSingleton<IIssuesData, InMemoryIssuesData>();
+
+            //services.AddSingleton<IBaseIssuesData, InMemoryBaseIssuesData>();
+            services.AddScoped<IBaseIssuesData, SQLBaseIssuesData>();
+
 
         }
 
