@@ -1,0 +1,39 @@
+﻿@model IEnumerable<BaseIssue>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(BaseIssue => BaseIssue.Id)</th>
+            <th>@Html.DisplayNameFor(BaseIssue => BaseIssue.IssueTS)</th>
+            <th>@Html.DisplayNameFor(BaseIssue => BaseIssue.IssueStatus)</th>
+            <th>@Html.DisplayNameFor(BaseIssue => BaseIssue.Category)</th>
+            <th>@Html.DisplayNameFor(BaseIssue => BaseIssue.IssueType)</th>
+            <th>@Html.DisplayNameFor(BaseIssue => BaseIssue.LongDescr)</th>
+            <th>@Html.DisplayNameFor(BaseIssue => BaseIssue.User)</th>
+            <th>@Html.DisplayNameFor(BaseIssue => BaseIssue.SolveDescr)</th>
+            <th>@Html.DisplayNameFor(BaseIssue => BaseIssue.SolveTS)</th>
+            <th>@Html.DisplayNameFor(BaseIssue => BaseIssue.SolveUser)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var baseIssue in Model)
+        {
+        <tr>
+            <td>@Html.DisplayFor(m => baseIssue.Id)</td>
+            <td>@Html.DisplayFor(m => baseIssue.IssueTS)</td>
+            <td>@Html.DisplayFor(m => baseIssue.IssueStatus)</td>
+            <td>@Html.DisplayFor(m => baseIssue.Category)</td>
+            <td>@Html.DisplayFor(m => baseIssue.IssueType)</td>
+            <td>@Html.DisplayFor(m => baseIssue.LongDescr)</td>
+            <td>@Html.DisplayFor(m => baseIssue.User)</td>
+            <td>@Html.DisplayFor(m => baseIssue.SolveDescr)</td>
+            <td>@Html.DisplayFor(m => baseIssue.SolveTS)</td>
+            <td>@Html.DisplayFor(m => baseIssue.SolveUser)</td>
+
+        </tr>
+        }
+    </tbody>
+</table>
