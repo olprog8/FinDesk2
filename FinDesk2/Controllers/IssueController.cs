@@ -1,16 +1,121 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+
+using FinDesk2.Data;
+using FinDesk2.Infrastructure.Interfaces;
+using FinDesk2.Models;
+using FinDesk2.Infrastructure.Mapping;
+using FinDesk2.ViewModels;
+
+using Microsoft.AspNetCore.Authorization;
+
+using FinDesk.Domain.Identity;
 
 namespace FinDesk2.Controllers
 {
+    [Authorize]
     public class IssueController : Controller
     {
-        public IActionResult Index()
+        private readonly IIssuesData _IssuesData;
+
+        public IssueController(IIssuesData IssuesData) => _IssuesData = IssuesData;
+
+        public IActionResult Index() => View(_IssuesData.GetAll().Select(e=>e.ToViewModel()));
+
+        public IActionResult Details(int Id)
         {
-            return View();
+            var issue = _IssuesData.GetById(Id);
+
+            if (issue is null)
+                return NotFound();
+
+            return View(issue.ToViewModel());
+        }
+
+        [Authorize(Roles = Role.Administrator)]
+        public IActionResult Create()
+        {
+            return View(new IssueViewModel());
+
+        }
+
+        [Authorize(Roles = Role.Administrator)]
+        [HttpPost, ValidateAntiForgeryToken]
+        public IActionResult Create(IssueViewModel Issue)
+        {
+            if (Issue is null)
+                throw new ArgumentNullException(nameof(Issue));
+
+            if (!ModelState.IsValid)
+                return View(Issue);
+
+            _IssuesData.Add(Issue.ToModel());
+            _IssuesData.SaveChanges();
+
+            return RedirectToAction("Index");
+
+        }
+
+        [Authorize(Roles = Role.Administrator)]
+        public IActionResult Edit(int? Id)
+        {
+            if (Id is null) return View(new IssueViewModel());
+
+            if (Id < 0)
+                return BadRequest();
+
+            var issue = _IssuesData.GetById((int)Id);
+
+            if (issue is null)
+                return NotFound();
+            
+            return View(issue.ToViewModel());
+        }
+
+        //Ответная часть. То, что происходит после нажатия кнопки Сохранить. В качестве параметра обычно указывается ViewModel
+        [HttpPost, ValidateAntiForgeryToken]
+        public IActionResult Edit(IssueViewModel Issue)
+        {
+            if (Issue is null)
+                throw new ArgumentNullException(nameof(Issue));
+
+            if (!ModelState.IsValid)
+                return View(Issue);
+
+            var id = Issue.Id;
+            if (id == 0)
+                _IssuesData.Add(Issue.ToModel());
+            else
+                _IssuesData.Edit(id, Issue.ToModel());
+
+            _IssuesData.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        [Authorize(Roles = Role.Administrator)]
+        public IActionResult Delete(int id)
+        {
+            if (id <= 0) return BadRequest();
+
+            var issue = _IssuesData.GetById(id);
+
+            if (issue is null)
+                return NotFound();
+            
+            return View(issue.ToViewModel());
+
+        }
+
+        [Authorize(Roles = Role.Administrator)]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            _IssuesData.Delete(id);
+            _IssuesData.SaveChanges();
+            return RedirectToAction("Index");
+
         }
     }
 }

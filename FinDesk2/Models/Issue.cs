@@ -11,12 +11,17 @@ namespace FinDesk2.Models
         public string User { get; set; }
 
         public DateTime IssueTS { get; set; }
+        
+        public string IssueType { get; set; }
         public string Category { get; set; }
         public string LongDescr { get; set; }
 
         public string Status { get; set; }
 
-        //public DateTime SolveTS { get; set; }
+        //
+        public DateTime SolveTS { get; set; }
+        public string SolveDescr { get; set; }
+        public string SolveUser { get; set; }
             
     }
 }

@@ -1,0 +1,74 @@
+﻿@model IssueViewModel
+
+@{
+    ViewData["Title"] = "Редактирование " + Model.Id;
+}
+
+    <div class="container">
+        <h3>@ViewData["Title"]</h3>
+        @*@using (Html.BeginForm("Edit", "Employees", FormMethod.Post))
+        {
+        }*@
+
+        @*<form asp-action="Edit" asp-route-Id="@Model.Id">*@
+        <form asp-action="Edit" method="Post">
+            <div class="row">
+                <div class="col-md-4">
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input asp-for="Id" type="hidden" />
+
+                    <div class="form-group">
+                        <label asp-for="User"></label>
+                        <input asp-for="User" class="form-control" />
+                        <span asp-validation-for="User" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="IssueType"></label>
+                        <input asp-for="IssueType" class="form-control" />
+                        <span asp-validation-for="IssueType" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="IssueTS"></label>
+                        <input asp-for="IssueTS" class="form-control" />
+                        <span asp-validation-for="IssueTS" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Category"></label>
+                        <input asp-for="Category" class="form-control" />
+                        <span asp-validation-for="Category" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LongDescr"></label>
+                        <input asp-for="LongDescr" class="form-control" />
+                        <span asp-validation-for="LongDescr" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Status"></label>
+                        <input asp-for="Status" class="form-control" />
+                        <span asp-validation-for="Status" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SolveTS"></label>
+                        <input asp-for="SolveTS" class="form-control" />
+                        <span asp-validation-for="SolveTS" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SolveDescr"></label>
+                        <input asp-for="SolveDescr" class="form-control" />
+                        <span asp-validation-for="SolveDescr" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SolveUser"></label>
+                        <input asp-for="SolveUser" class="form-control" />
+                        <span asp-validation-for="SolveUser" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <input type="submit" value="Сохранить" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
