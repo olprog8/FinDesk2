@@ -3,9 +3,14 @@
     ViewData["Title"] = "Index";
 }
 
+<p>
+    <a asp-area="Admin" asp-controller="BaseIssues" action="Edit" class="btn btn-success">Добавить новый товар</a>
+</p>
+
 <table class="table">
     <thead>
         <tr>
+            <th></th>
             <th>@Html.DisplayNameFor(BaseIssue => BaseIssue.Id)</th>
             <th>@Html.DisplayNameFor(BaseIssue => BaseIssue.IssueTS)</th>
             <th>@Html.DisplayNameFor(BaseIssue => BaseIssue.IssueStatus)</th>
@@ -16,12 +21,18 @@
             <th>@Html.DisplayNameFor(BaseIssue => BaseIssue.SolveDescr)</th>
             <th>@Html.DisplayNameFor(BaseIssue => BaseIssue.SolveTS)</th>
             <th>@Html.DisplayNameFor(BaseIssue => BaseIssue.SolveUser)</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach(var baseIssue in Model)
         {
         <tr>
+            <td>
+                <a asp-area="Admin" asp-controller="BaseIssues" asp-action="Edit" asp-route-id="@baseIssue.Id" title="Редактировать">
+                    <i class="glyphicon glyphicon-edit"></i>
+                </a>
+            </td>
             <td>@Html.DisplayFor(m => baseIssue.Id)</td>
             <td>@Html.DisplayFor(m => baseIssue.IssueTS)</td>
             <td>@Html.DisplayFor(m => baseIssue.IssueStatus)</td>
@@ -32,7 +43,11 @@
             <td>@Html.DisplayFor(m => baseIssue.SolveDescr)</td>
             <td>@Html.DisplayFor(m => baseIssue.SolveTS)</td>
             <td>@Html.DisplayFor(m => baseIssue.SolveUser)</td>
-
+            <td>
+                <a asp-area="Admin" asp-controller="BaseIssues" asp-action="Delete" asp-route-id="@baseIssue.Id" title="Удалить" class="text-danger">
+                    <i class="glyphicon glyphicon-remove"></i>
+                </a>
+            </td>
         </tr>
         }
     </tbody>
