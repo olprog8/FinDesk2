@@ -13,12 +13,12 @@ namespace FinDesk2.Infrastructure.Services
     public class InMemoryBaseIssuesData : IBaseIssuesData
     {
         public IEnumerable<Category> GetCategories() => TestData.Categories;
-        
+
         public IEnumerable<IssueStatus> GetIssueStatuses() => TestData.IssueStatuses;
 
         public IEnumerable<IssueType> GetIssueTypes() => TestData.IssueTypes;
 
-        public IEnumerable<BaseIssue> GetBaseIssues(BaseIssueFilter Filter = null) 
+        public IEnumerable<BaseIssue> GetBaseIssues(BaseIssueFilter Filter = null)
         {
             var query = TestData.BaseIssues;
             if (Filter?.CategoryId != null)
@@ -33,5 +33,6 @@ namespace FinDesk2.Infrastructure.Services
             return query;
         }
 
-        public BaseIssue GetIssueById(int id) => TestData.BaseIssues.FirstOrDefault(p => p.Id == id)
+        public BaseIssue GetIssueById(int id) => TestData.BaseIssues.FirstOrDefault(p => p.Id == id);
+    }
 }

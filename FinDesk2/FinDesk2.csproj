@@ -21,4 +21,10 @@
     <ProjectReference Include="..\FinDesk.Domain\FinDesk.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="wwwroot\admin\" />
+  </ItemGroup>
+
 </Project>
