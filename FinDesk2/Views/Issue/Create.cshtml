@@ -1,7 +1,7 @@
 ﻿@model IssueViewModel
 
 @{
-    ViewData["Title"] = "View";
+    ViewData["Title"] = "Новый Запрос";
 }
 
     <div class="container">
@@ -18,22 +18,38 @@
 
                     <div class="form-group">
                         <label asp-for="User" class="control-label"></label>
-                        <input asp-for="User" class="form-control" />
+                        <input asp-for="User" class="form-control" readonly value="@User.Identity.Name" />
                         <span asp-validation-for="User" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="IssueTS" class="control-label"></label>
-                        <input asp-for="IssueTS" class="form-control" />
+                        <input asp-for="IssueTS" type="text" class="form-control" readonly value="@Model.IssueTS"/>
                         <span asp-validation-for="IssueTS" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="IssueType" class="control-label"></label>
-                        <input asp-for="IssueType" class="form-control" />
+                        @*<input asp-for="IssueType" class="form-control" />*@
+                        <select asp-for="IssueType" class="form-control">
+                            <option value="Bug">Bug (проблема)</option>
+                            <option value="Task">Task (Задача)</option>
+                            <option value="Change">Change (Изменение)</option>
+                            <option value="Project">Project (Проект)</option>
+                         </select>
                         <span asp-validation-for="IssueType" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Category" class="control-label"></label>
-                        <input asp-for="Category" class="form-control" />
+                        <select asp-for="Category" class="form-control">
+                            <option value="SunSystems">SunSystems</option>
+                            <option value="Vision">Vision</option>
+                            <option value="Collect">Collect</option>
+                            <option value="1C Cash">1C Cash</option>
+                            <option value="1C Trade">1C Trade</option>
+                            <option value="1C Trade Exp">1C Trade Exp</option>
+                            <option value="1C Duty Billing">1C Duty Billing</option>
+                            <option value="1C Duty Billing Exp">1C Duty Billing Exp</option>
+                            <option value="1C Edo">1C Edo</option>
+                        </select>
                         <span asp-validation-for="Category" class="text-danger"></span>
                     </div>
                     <div class="form-group">
@@ -42,24 +58,24 @@
                         <span asp-validation-for="LongDescr" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Status" class="control-label"></label>
-                        <input asp-for="Status" class="form-control" />
-                        <span asp-validation-for="Status" class="text-danger"></span>
+                        @*<label asp-for="Status" class="control-label"></label>*@
+                        <input asp-for="Status" type="hidden"  class="form-control" value="New"/>
+                        @*<span asp-validation-for="Status" class="text-danger"></span>*@
                     </div>
                     <div class="form-group">
-                        <label asp-for="SolveTS" class="control-label"></label>
-                        <input asp-for="SolveTS" class="form-control" />
-                        <span asp-validation-for="SolveTS" class="text-danger"></span>
+                        @*<label asp-for="SolveTS" class="control-label"></label>*@
+                        <input asp-for="SolveTS" type="hidden" class="form-control" />
+                        @*<span asp-validation-for="SolveTS" class="text-danger"></span>*@
                     </div>
                     <div class="form-group">
-                        <label asp-for="SolveDescr" class="control-label"></label>
-                        <input asp-for="SolveDescr" class="form-control" />
-                        <span asp-validation-for="SolveDescr" class="text-danger"></span>
+                        @*<label asp-for="SolveDescr" class="control-label"></label>*@
+                        <input asp-for="SolveDescr" type="hidden" class="form-control" />
+                        @*<span asp-validation-for="SolveDescr" class="text-danger"></span>*@
                     </div>
                     <div class="form-group">
-                        <label asp-for="SolveUser" class="control-label"></label>
-                        <input asp-for="SolveUser" class="form-control" />
-                        <span asp-validation-for="SolveUser" class="text-danger"></span>
+                        @*<label asp-for="SolveUser" class="control-label"></label>*@
+                        <input asp-for="SolveUser" type="hidden" class="form-control" />
+                        @*<span asp-validation-for="SolveUser" class="text-danger"></span>*@
                     </div>
                     <div class="form-group">
                         <input type="submit" value="Create" class="btn btn-default" />
