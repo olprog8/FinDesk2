@@ -1,7 +1,7 @@
 ﻿@model IssueViewModel
 
 @{
-    ViewData["Title"] = "Редактирование " + Model.Id;
+    ViewData["Title"] = "Редактирование Запроса: " + Model.Id;
 }
 
     <div class="container">
@@ -20,22 +20,22 @@
 
                     <div class="form-group">
                         <label asp-for="User"></label>
-                        <input asp-for="User" class="form-control" />
+                        <input asp-for="User" class="form-control" readonly />
                         <span asp-validation-for="User" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="IssueType"></label>
-                        <input asp-for="IssueType" class="form-control" />
+                        <input asp-for="IssueType" class="form-control" readonly/>
                         <span asp-validation-for="IssueType" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="IssueTS"></label>
-                        <input asp-for="IssueTS" class="form-control" />
+                        <input asp-for="IssueTS" class="form-control" readonly/>
                         <span asp-validation-for="IssueTS" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Category"></label>
-                        <input asp-for="Category" class="form-control" />
+                        <input asp-for="Category" class="form-control" readonly />
                         <span asp-validation-for="Category" class="text-danger"></span>
                     </div>
                     <div class="form-group">
@@ -45,7 +45,13 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="Status"></label>
-                        <input asp-for="Status" class="form-control" />
+                        @*<input asp-for="Status" class="form-control" />*@
+                    <select asp-for="Status" class="form-control">
+                        <option value="New">New</option>
+                        <option value="InProcess">InProcess</option>
+                        <option value="Solved">Solved</option>
+                        <option value="Canceled">Canceled</option>
+                    </select>
                         <span asp-validation-for="Status" class="text-danger"></span>
                     </div>
                     <div class="form-group">

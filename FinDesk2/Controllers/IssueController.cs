@@ -37,7 +37,10 @@ namespace FinDesk2.Controllers
         [Authorize(Roles = Role.Administrator)]
         public IActionResult Create()
         {
-            return View(new IssueViewModel());
+            var issueViewModel = new IssueViewModel();
+            issueViewModel.IssueTS = DateTime.Now;
+
+            return View(issueViewModel);
 
         }
 
