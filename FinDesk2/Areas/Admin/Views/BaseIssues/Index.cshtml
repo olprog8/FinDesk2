@@ -1,11 +1,14 @@
 ﻿@model IEnumerable<BaseIssue>
 @{
-    ViewData["Title"] = "Список запросов";
+    ViewData["Title"] = "Список Инцидентов";
 }
 
-<p>
-    <a asp-area="Admin" asp-controller="BaseIssues" action="Edit" class="btn btn-success">Добавить новый товар</a>
-</p>
+<div class="row">
+    <p>
+        <a asp-area="Admin" asp-controller="BaseIssues" action="Edit" class="btn btn-success">Добавить новый Инцидент</a>
+    </p>
+</div>
+
 
 <table class="table">
     <thead>

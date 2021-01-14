@@ -34,5 +34,10 @@ namespace FinDesk2.Infrastructure.Services
         }
 
         public BaseIssue GetIssueById(int id) => TestData.BaseIssues.FirstOrDefault(p => p.Id == id);
+
+        public async Task<BaseIssue> CreateBaseIssueAsync(BaseIssue baseIssue)
+        {
+            return new BaseIssue();
+        }
     }
 }

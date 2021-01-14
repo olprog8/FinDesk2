@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 
 using FinDesk.Domain.Entities;
 
+using FinDesk2.ViewModels;
+
 namespace FinDesk2.Infrastructure.Interfaces
 {
     public interface IBaseIssuesData
@@ -26,6 +28,7 @@ namespace FinDesk2.Infrastructure.Interfaces
         /// <returns>Запрос(Issue)</returns>
         BaseIssue GetIssueById(int id);
 
+        Task<BaseIssue> CreateBaseIssueAsync(BaseIssue baseIssue);
 
     }
 }
