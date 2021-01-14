@@ -35,7 +35,7 @@ namespace FinDesk2
         public void ConfigureServices(IServiceCollection services)
         {
             //Подключение к БД
-            services.AddDbContext<FinDeskDB>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<FinDeskDB>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")).EnableSensitiveDataLogging());
 
             services.AddIdentity<User, Role>()
                 .AddEntityFrameworkStores<FinDeskDB>()
