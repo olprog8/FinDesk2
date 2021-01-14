@@ -73,7 +73,7 @@ namespace FinDesk2
                 opt.SlidingExpiration = true; //L6 ПШ Параметр который заставит систему автоматически подменять идентификатор сессии пользователя, как он авторизовался
             });
 
-            services.AddTransient<FinDeskDBInitializer>();
+            services.AddTransient<FinDeskDBInitializerSimple>();
 
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
 

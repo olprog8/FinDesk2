@@ -10,10 +10,6 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 using FinDesk.Domain.Identity;
 
-using Microsoft.Extensions.Logging;
-
-using Microsoft.Extensions.Logging.Console;
-
 
 
 namespace FinDesk.DAL.Context
@@ -22,6 +18,8 @@ namespace FinDesk.DAL.Context
     {
 
         public DbSet<BaseIssue> BaseIssues { get; set; }
+
+        public DbSet<SimpleIssue> SimpleIssues { get; set; }
 
         public DbSet<Category> Categories { get; set; }
 

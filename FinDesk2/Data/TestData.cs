@@ -121,7 +121,46 @@ namespace FinDesk2.Data
             new IssueType{Id = 2, Name = "Task", Order = 1 },
             new IssueType{Id = 3, Name = "Project", Order = 2 },
             };
-    }
 
+
+        public static IEnumerable<SimpleIssue> SimpleIssues { get; } = new[]
+        {
+            new SimpleIssue
+            {
+                Id = 1,
+                User = "arianov",
+                IssueType="Bug",
+                LongDescr = "Не могу зайти в SUN",
+                SolveDescr = ""
+            },
+            new SimpleIssue
+            {
+                Id = 2,
+                User = "elukashina",
+                IssueType="Task",
+                LongDescr = "Доработать отчет SUN",
+                SolveDescr = ""
+            },
+            new SimpleIssue
+            {
+                Id = 3,
+                IssueType="Task",
+                User = "olipodat",
+                LongDescr = "Добавить данные в справочник 1С Cash",
+                SolveDescr = ""
+            },
+            new SimpleIssue
+            {
+                Id = 3,
+                IssueType="Project",
+                User = "asuvorova",
+                LongDescr = "Разработать систему занесения данных в SUN",
+                SolveDescr = ""
+            },
+
+        };
+
+
+    }
 
 }
