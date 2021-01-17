@@ -16,6 +16,7 @@ namespace FinDesk2.Infrastructure.Mapping
         {
             Id = i.Id,
             User = i.User,
+            IssueType = i.IssueType,
             LongDescr = i.LongDescr,
             SolveDescr = i.SolveDescr,
         };
@@ -24,6 +25,7 @@ namespace FinDesk2.Infrastructure.Mapping
         {
             Id = i.Id,
             User = i.User,
+            IssueType = i.IssueType,
             LongDescr = i.LongDescr,
             SolveDescr = i.SolveDescr,
         };

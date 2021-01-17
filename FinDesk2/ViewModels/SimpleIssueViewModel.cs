@@ -16,8 +16,12 @@ namespace FinDesk2.ViewModels
         [Display(Name = "Заявитель")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "<Заявитель> является обязательным")]
         [MinLength(3, ErrorMessage = "Минимальная длина 3 символов")]
-        [RegularExpression(@"(?:[А-ЯЁ][а-яё]+)|(?:[A-Z][a-z]+)", ErrorMessage = "Ошибка формата имени либо кириллица, либо латиница")]
+        //[RegularExpression(@"(?:[А-ЯЁ][а-яё]+)|(?:[A-Z][a-z]+)", ErrorMessage = "Ошибка формата имени либо кириллица, либо латиница")]
         public string User { get; set; }
+
+        [Display(Name = "Тип Инцидента")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "<ТипИнцидента> является обязательным")]
+        public string IssueType { get; set; }
 
         [Display(Name = "Описание проблемы")]
         [StringLength(maximumLength: 300, MinimumLength = 10, ErrorMessage = "Длина сообщения от 10 до 300 символов")]

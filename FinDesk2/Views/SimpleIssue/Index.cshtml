@@ -19,6 +19,7 @@
             <tr>
                 <td>Id</td>
                 <td>Creater</td>
+                <td>Type</td>
                 <td>LongDescr</td>
                 <td></td>
 
@@ -32,23 +33,25 @@
         <tbody>
             @foreach (var issue in Model)
             {
-                <tr>
-                    <td>@issue.Id</td>
-                    <td>@issue.User</td>
-                    <td>
-                        <a asp-controller="Issue" asp-action="Details" asp-route-id="@issue.Id">Details</a>
-                    </td>
-                    @if (User.IsInRole(FinDesk.Domain.Identity.Role.Administrator))
-                    {
+            <tr>
+                <td>@issue.Id</td>
+                <td>@issue.User</td>
+                <td>@issue.IssueType</td>
+                <td>@issue.LongDescr</td>
+                <td>
+                    <a asp-controller="SimpleIssue" asp-action="Details" asp-route-id="@issue.Id">Details</a>
+                </td>
+                @if (User.IsInRole(FinDesk.Domain.Identity.Role.Administrator))
+                {
 
-                        <td>
-                            <a asp-controller="SimpleIssue" asp-action="Edit" asp-route-id="@issue.Id">Edit</a>
-                        </td>
-                        <td>
-                            <a asp-controller="SimpleIssue" asp-action="Delete" asp-route-id="@issue.Id" class="text-danger">Delete</a>
-                        </td>
-                    }
-                </tr>
+                    <td>
+                        <a asp-controller="SimpleIssue" asp-action="Edit" asp-route-id="@issue.Id">Edit</a>
+                    </td>
+                    <td>
+                        <a asp-controller="SimpleIssue" asp-action="Delete" asp-route-id="@issue.Id" class="text-danger">Delete</a>
+                    </td>
+                }
+            </tr>
             }
         </tbody>
     </table>

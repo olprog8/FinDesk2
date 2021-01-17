@@ -151,9 +151,9 @@ namespace FinDesk2.Data
             },
             new SimpleIssue
             {
-                Id = 3,
+                Id = 4,
                 IssueType="Project",
-                User = "asuvorova",
+                User = "ansuvorova",
                 LongDescr = "Разработать систему занесения данных в SUN",
                 SolveDescr = ""
             },

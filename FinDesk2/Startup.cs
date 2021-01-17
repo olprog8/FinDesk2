@@ -77,7 +77,9 @@ namespace FinDesk2
 
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
-            services.AddSingleton<IIssuesData, InMemoryIssuesData>();
+            //services.AddSingleton<IIssuesData, InMemoryIssuesData>();
+
+            services.AddScoped<ISimpleIssuesData, SQLSimpleIssuesData>();
 
             //services.AddSingleton<IBaseIssuesData, InMemoryBaseIssuesData>();
             services.AddScoped<IBaseIssuesData, SQLBaseIssuesData>();
@@ -86,7 +88,7 @@ namespace FinDesk2
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, FinDeskDBInitializer db)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, FinDeskDBInitializerSimple db)
         {
             //Инициализируем БД
             db.Initialize();

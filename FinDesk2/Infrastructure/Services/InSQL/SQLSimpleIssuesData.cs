@@ -49,7 +49,7 @@ namespace FinDesk2.Infrastructure.Services.InSQL
             if (db_simpleIssue is null)
                 return false;
 
-            int numberOfDeleted = _db.Database.ExecuteSqlRaw("DELETE FROM SimpleIssues WHERE Name={0}", id);
+            int numberOfDeleted = _db.Database.ExecuteSqlRaw("DELETE FROM SimpleIssues WHERE Id={0}", id);
 
             if (numberOfDeleted > 0)
                 return true;
@@ -85,7 +85,7 @@ namespace FinDesk2.Infrastructure.Services.InSQL
 
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }
