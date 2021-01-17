@@ -21,7 +21,7 @@
         <li><a asp-controller="Home" asp-action="ContactUs">Контакты</a></li>*@
 
         @*<li><a asp-controller="Employees" asp-action="Index">Сотрудники</a></li>*@
-        <li><a asp-controller="Issue" asp-action="Index">Issues</a></li>
+        <li><a asp-controller="SimpleIssue" asp-action="Index">Запросы</a></li>
         @if (User.IsInRole(FinDesk.Domain.Identity.Role.Administrator))
         {
             <li><a asp-area="Admin" asp-controller="Home" asp-action="Index">Админка<i class="fa fa-key"></i></a></li>
