@@ -43,7 +43,7 @@ namespace FinDesk2.Data
             //!!!Запускаем только при первом созданнии базы
             //await InitializeIdentityAsync().ConfigureAwait(false);
 
-            await InitializeIssuesAsync().ConfigureAwait(false);
+            await InitializeSimpleIssuesAsync().ConfigureAwait(false);
 
         }
 

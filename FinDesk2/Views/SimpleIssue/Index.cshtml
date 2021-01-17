@@ -1,0 +1,67 @@
+﻿@model IEnumerable<SimpleIssueViewModel>
+
+@{
+    ViewData["Title"] = "Список Запросов";
+}
+
+<div class="container">
+
+    <h3>@ViewData["Title"]</h3>
+
+    @if (User.IsInRole(FinDesk.Domain.Identity.Role.Administrator))
+    {
+        <a asp-action="Edit" class="btn btn-success">Создать через Edit</a>
+        <a asp-action="Create" class="btn btn-success">Создать через Create</a>
+    }
+
+    <table class="table table-bordered" id="st_issue_table">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>Creater</td>
+                <td>LongDescr</td>
+                <td></td>
+
+                @if (User.IsInRole(FinDesk.Domain.Identity.Role.Administrator))
+                {
+                    <td></td>
+                    <td></td>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var issue in Model)
+            {
+                <tr>
+                    <td>@issue.Id</td>
+                    <td>@issue.User</td>
+                    <td>
+                        <a asp-controller="Issue" asp-action="Details" asp-route-id="@issue.Id">Details</a>
+                    </td>
+                    @if (User.IsInRole(FinDesk.Domain.Identity.Role.Administrator))
+                    {
+
+                        <td>
+                            <a asp-controller="SimpleIssue" asp-action="Edit" asp-route-id="@issue.Id">Edit</a>
+                        </td>
+                        <td>
+                            <a asp-controller="SimpleIssue" asp-action="Delete" asp-route-id="@issue.Id" class="text-danger">Delete</a>
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Styles{
+    <style>
+        #st_issue_table {
+            background: yellow;
+        }
+    </style>
+}
+
+@section Scripts{
+    <!--<script>TestScripts</script>-->
+}
