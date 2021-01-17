@@ -16,18 +16,24 @@ namespace FinDesk2.Infrastructure.Mapping
         {
             Id = i.Id,
             User = i.User,
+            IssueTS = i.IssueTS,
             IssueType = i.IssueType,
+            Category = i.Category,
             LongDescr = i.LongDescr,
             SolveDescr = i.SolveDescr,
+            IssueStatus = i.IssueStatus
         };
 
         public static SimpleIssue ToModel(this SimpleIssueViewModel i) => new SimpleIssue
         {
             Id = i.Id,
             User = i.User,
+            IssueTS = i.IssueTS,
             IssueType = i.IssueType,
+            Category = i.Category,
             LongDescr = i.LongDescr,
             SolveDescr = i.SolveDescr,
+            IssueStatus = i.IssueStatus
         };
 
     }

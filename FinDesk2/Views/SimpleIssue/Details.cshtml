@@ -7,9 +7,12 @@
 <h3>@ViewData["Title"]</h3>
 
 <div class="container">
-    <h3>Задача №@Model.Id</h3>
+    <h3>Запрос №: @Model.Id</h3>
+    <p>Статус: @Model.IssueStatus</p>
     <p>Пользователь: @Model.User</p>
-    <p>ТипИнцидента: @Model.IssueType</p>
+    <p>Дата: @Model.IssueTS</p>
+    <p>Тип Запроса: @Model.IssueType</p>
+    <p>Категория: @Model.Category</p>
     <p>Описание: @Model.LongDescr</p>
 </div>
 <a asp-controller="SimpleIssue" asp-action="Index">Запросы</a>

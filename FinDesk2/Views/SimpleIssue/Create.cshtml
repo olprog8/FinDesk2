@@ -15,36 +15,45 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                 <input asp-for="Id" type="hidden" class="form-control" />
-
+                
+                <div class="form-group">
+                    <label asp-for="IssueStatus"></label>
+                    <input asp-for="IssueStatus" type="text" class="form-control" readonly value="New" />
+                    <span asp-validation-for="IssueStatus" class="text-danger"></span>
+                </div>
                 <div class="form-group">
                     <label asp-for="User" class="control-label"></label>
                     <input asp-for="User" class="form-control" readonly value="@User.Identity.Name" />
                     <span asp-validation-for="User" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="IssueType" class="control-label"></label>
-                    @*<input asp-for="IssueType" class="form-control" />*@
-                    <select asp-for="IssueType" class="form-control">
-                        <option value="Bug">Bug (проблема)</option>
-                        <option value="Task">Task (Задача)</option>
-                        <option value="Change">Change (Изменение)</option>
-                        <option value="Project">Project (Проект)</option>
-                    </select>
+                    <label asp-for="IssueTS" class="control-label"></label>
+                    <input asp-for="IssueTS" type="text" class="form-control" readonly value="@Model.IssueTS" />
+                    <span asp-validation-for="IssueTS" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="IssueType"></label>
+                    @*<input asp-for="IssueTypeId" class="form-control" readonly />*@
+                    <select class="form-control" asp-for="IssueType" asp-items="ViewBag.IssueTypesSL"></select>
                     <span asp-validation-for="IssueType" class="text-danger"></span>
-                 </div>
-                    <div class="form-group">
-                        <label asp-for="LongDescr" class="control-label"></label>
-                        <input asp-for="LongDescr" class="form-control" />
-                        <span asp-validation-for="LongDescr" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        @*<label asp-for="SolveDescr" class="control-label"></label>*@
-                        <input asp-for="SolveDescr" type="hidden" class="form-control" />
-                        @*<span asp-validation-for="SolveDescr" class="text-danger"></span>*@
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-default" />
-                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Category"></label>
+                    @*<input asp-for="CategoryId" class="form-control" readonly />*@
+                    <select class="form-control" asp-for="Category" asp-items="ViewBag.IssueGategoriesSL"></select>
+                    <span asp-validation-for="Category" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LongDescr" class="control-label"></label>
+                    <input asp-for="LongDescr" class="form-control" />
+                    <span asp-validation-for="LongDescr" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="SolveDescr" type="hidden" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
             </form>
         </div>
     </div>

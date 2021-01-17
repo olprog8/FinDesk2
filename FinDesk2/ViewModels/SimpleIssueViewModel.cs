@@ -19,9 +19,17 @@ namespace FinDesk2.ViewModels
         //[RegularExpression(@"(?:[А-ЯЁ][а-яё]+)|(?:[A-Z][a-z]+)", ErrorMessage = "Ошибка формата имени либо кириллица, либо латиница")]
         public string User { get; set; }
 
-        [Display(Name = "Тип Инцидента")]
+        [Display(Name = "Дата Создания")]
+        [Required(ErrorMessage = "<Дата Создания> является обязательным")]
+        public DateTime IssueTS { get; set; }
+
+        [Display(Name = "Тип Запроса")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "<ТипИнцидента> является обязательным")]
         public string IssueType { get; set; }
+
+        [Display(Name = "Категория")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "<Категория> является обязательным")]
+        public string Category { get; set; }
 
         [Display(Name = "Описание проблемы")]
         [StringLength(maximumLength: 300, MinimumLength = 10, ErrorMessage = "Длина сообщения от 10 до 300 символов")]
@@ -31,6 +39,10 @@ namespace FinDesk2.ViewModels
 
         [Display(Name = "Описание решения")]
         public string SolveDescr { get; set; }
+
+        [Display(Name = "Статус")]
+        [Required(ErrorMessage = "<Статус> является обязательным")]
+        public string IssueStatus { get; set; }
 
     }
 }

@@ -4,14 +4,16 @@ using FinDesk.DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FinDesk.DAL.Migrations
 {
     [DbContext(typeof(FinDeskDB))]
-    partial class FinDeskDBModelSnapshot : ModelSnapshot
+    [Migration("20210117194445_SimpleIssue_AddColIssueTS")]
+    partial class SimpleIssue_AddColIssueTS
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -135,12 +137,6 @@ namespace FinDesk.DAL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Category")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("IssueStatus")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("IssueTS")
                         .HasColumnType("datetime2");

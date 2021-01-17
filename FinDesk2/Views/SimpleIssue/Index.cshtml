@@ -4,58 +4,65 @@
     ViewData["Title"] = "Список Запросов";
 }
 
-<div class="container">
+    <div class="container">
 
-    <h3>@ViewData["Title"]</h3>
+        <h3>@ViewData["Title"]</h3>
 
-    @if (User.IsInRole(FinDesk.Domain.Identity.Role.Administrator))
-    {
-        <a asp-action="Edit" class="btn btn-success">Создать через Edit</a>
-        <a asp-action="Create" class="btn btn-success">Создать через Create</a>
-    }
+        @if (User.IsInRole(FinDesk.Domain.Identity.Role.Administrator))
+        {
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a asp-action="Create" class="btn btn-success">Создать</a>
+            </div>
+            @*<a asp-action="Edit" class="btn btn-success">Создать через Edit</a>*@
+            
+        }
 
-    <table class="table table-bordered" id="st_issue_table">
-        <thead>
-            <tr>
-                <td>Id</td>
-                <td>Creater</td>
-                <td>Type</td>
-                <td>LongDescr</td>
-                <td></td>
+        <table class="table table-bordered" id="st_issue_table">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Дата создания</td>
+                    <td>Заявитель</td>
+                    <td>Тип Запроса</td>
+                    <td>Категория</td>
+                    <td>Описание Запроса</td>
+                    <td>Детали</td>
 
-                @if (User.IsInRole(FinDesk.Domain.Identity.Role.Administrator))
+                    @if (User.IsInRole(FinDesk.Domain.Identity.Role.Administrator))
+                    {
+                        <td>Редактировать</td>
+                        <td>Удалить</td>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var issue in Model)
                 {
-                    <td></td>
-                    <td></td>
-                }
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var issue in Model)
-            {
-            <tr>
-                <td>@issue.Id</td>
-                <td>@issue.User</td>
-                <td>@issue.IssueType</td>
-                <td>@issue.LongDescr</td>
-                <td>
-                    <a asp-controller="SimpleIssue" asp-action="Details" asp-route-id="@issue.Id">Details</a>
-                </td>
-                @if (User.IsInRole(FinDesk.Domain.Identity.Role.Administrator))
-                {
+                    <tr>
+                        <td>@issue.Id</td>
+                        <td>@issue.IssueTS</td>
+                        <td>@issue.User</td>
+                        <td>@issue.IssueType</td>
+                        <td>@issue.Category</td>
+                        <td>@issue.LongDescr</td>
+                        <td>
+                            <a asp-controller="SimpleIssue" asp-action="Details" asp-route-id="@issue.Id">Details</a>
+                        </td>
+                        @if (User.IsInRole(FinDesk.Domain.Identity.Role.Administrator))
+                        {
 
-                    <td>
-                        <a asp-controller="SimpleIssue" asp-action="Edit" asp-route-id="@issue.Id">Edit</a>
-                    </td>
-                    <td>
-                        <a asp-controller="SimpleIssue" asp-action="Delete" asp-route-id="@issue.Id" class="text-danger">Delete</a>
-                    </td>
+                            <td>
+                                <a asp-controller="SimpleIssue" asp-action="Edit" asp-route-id="@issue.Id">Edit</a>
+                            </td>
+                            <td>
+                                <a asp-controller="SimpleIssue" asp-action="Delete" asp-route-id="@issue.Id" class="text-danger">Delete</a>
+                            </td>
+                        }
+                    </tr>
                 }
-            </tr>
-            }
-        </tbody>
-    </table>
-</div>
+            </tbody>
+        </table>
+    </div>
 
 @section Styles{
     <style>

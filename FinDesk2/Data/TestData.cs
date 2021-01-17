@@ -129,32 +129,44 @@ namespace FinDesk2.Data
             {
                 Id = 1,
                 User = "arianov",
+                IssueTS = DateTime.Now.AddDays(-10).AddHours(-1).AddMinutes(-10),
                 IssueType="Bug",
+                Category="",
                 LongDescr = "Не могу зайти в SUN",
+                IssueStatus="",
                 SolveDescr = ""
             },
             new SimpleIssue
             {
                 Id = 2,
                 User = "elukashina",
+                IssueTS = DateTime.Now.AddDays(-8).AddHours(-2).AddMinutes(-5),
                 IssueType="Task",
+                Category="",
                 LongDescr = "Доработать отчет SUN",
+                IssueStatus="",
                 SolveDescr = ""
             },
             new SimpleIssue
             {
                 Id = 3,
                 IssueType="Task",
+                Category="",
+                IssueTS = DateTime.Now.AddDays(-6).AddHours(-1).AddMinutes(-3),
                 User = "olipodat",
                 LongDescr = "Добавить данные в справочник 1С Cash",
+                IssueStatus="",
                 SolveDescr = ""
             },
             new SimpleIssue
             {
                 Id = 4,
                 IssueType="Project",
+                Category="",
+                IssueTS = DateTime.Now.AddDays(-30).AddHours(-1).AddMinutes(-3),
                 User = "ansuvorova",
                 LongDescr = "Разработать систему занесения данных в SUN",
+                IssueStatus="",
                 SolveDescr = ""
             },
 

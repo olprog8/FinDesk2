@@ -12,6 +12,7 @@ using FinDesk2.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 
 using FinDesk.Domain.Identity;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FinDesk2.Controllers
 {
@@ -19,8 +20,13 @@ namespace FinDesk2.Controllers
     public class SimpleIssueController : Controller
     {
         private readonly ISimpleIssuesData _IssuesData;
+        private readonly IBaseIssuesData _BaseIssuesData;
 
-        public SimpleIssueController(ISimpleIssuesData IssuesData) => _IssuesData = IssuesData;
+        public SimpleIssueController(ISimpleIssuesData IssuesData, IBaseIssuesData BaseIssueData)
+        {
+            _IssuesData = IssuesData;
+            _BaseIssuesData = BaseIssueData;
+        }
 
         public IActionResult Index() => View(_IssuesData.GetAll().Select(e => e.ToViewModel()));
 
@@ -38,7 +44,16 @@ namespace FinDesk2.Controllers
         public IActionResult Create()
         {
             var issueViewModel = new SimpleIssueViewModel();
-            //issueViewModel.IssueTS = DateTime.Now;
+            issueViewModel.IssueTS = DateTime.Now;
+
+            var issueTypes = _BaseIssuesData.GetIssueTypes().ToArray();
+            ViewBag.IssueTypesSL = new SelectList(issueTypes, "Name", "Name");
+
+            var issueCategories = _BaseIssuesData.GetCategories().Where(c => c.ParentCategory != null).ToArray();
+            ViewBag.IssueGategoriesSL = new SelectList(issueCategories, "Name", "Name");
+
+            var issueStatuses = _BaseIssuesData.GetIssueStatuses().ToArray();
+            ViewBag.IssueStatusesSL = new SelectList(issueStatuses, "Name", "Name");
 
             return View(issueViewModel);
 
@@ -73,6 +88,15 @@ namespace FinDesk2.Controllers
 
             if (issue is null)
                 return NotFound();
+
+            var issueTypes = _BaseIssuesData.GetIssueTypes().ToArray();
+            ViewBag.IssueTypesSL = new SelectList(issueTypes, "Name", "Name");
+
+            var issueCategories = _BaseIssuesData.GetCategories().Where(c => c.ParentCategory != null).ToArray();
+            ViewBag.IssueGategoriesSL = new SelectList(issueCategories, "Name", "Name");
+
+            var issueStatuses = _BaseIssuesData.GetIssueStatuses().ToArray();
+            ViewBag.IssueStatusesSL = new SelectList(issueStatuses, "Name", "Name");
 
             return View(issue.ToViewModel());
         }

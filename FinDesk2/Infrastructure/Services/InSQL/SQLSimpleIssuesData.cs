@@ -30,8 +30,10 @@ namespace FinDesk2.Infrastructure.Services.InSQL
                 //ПШ L8 1.45 Формируем новый заказ
                 var simpleIssue = new SimpleIssue
                 {
-                    User = "Fantomas",
+                    User = "TheUser",
+                    IssueTS = SimpleIssue.IssueTS,
                     IssueType = SimpleIssue.IssueType,
+                    Category = SimpleIssue.Category,
                     LongDescr = SimpleIssue.LongDescr,
                     SolveDescr = SimpleIssue.SolveDescr
                 };
@@ -69,10 +71,15 @@ namespace FinDesk2.Infrastructure.Services.InSQL
             if(db_simpleIssue is null)
                 throw new InvalidOperationException($"Инцидент с id:{db_simpleIssue.Id} в базе данных не найден!");
 
-            db_simpleIssue.IssueType = SimpleIssue.IssueType;
             db_simpleIssue.User = SimpleIssue.User;
+            db_simpleIssue.IssueTS = SimpleIssue.IssueTS;
+            db_simpleIssue.IssueType = SimpleIssue.IssueType;
+            db_simpleIssue.Category = SimpleIssue.Category;
+            db_simpleIssue.IssueStatus = SimpleIssue.IssueStatus;
             db_simpleIssue.LongDescr= SimpleIssue.LongDescr;
             db_simpleIssue.SolveDescr = SimpleIssue.SolveDescr;
+
+            _db.SaveChanges();
 
         }
 
