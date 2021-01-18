@@ -5,9 +5,8 @@
 }
 
 <div class="container">
-    <h2>View</h2>
+    <h3>@ViewData["Title"]</h3>
 
-    <h4>Issue</h4>
     <hr />
     <div class="row">
         <div class="col-md-4">
@@ -23,7 +22,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="User" class="control-label"></label>
-                    <input asp-for="User" class="form-control" readonly value="@User.Identity.Name" />
+                    <input asp-for="User" class="form-control" readonly value="@RCurUser.WLgn()" />
                     <span asp-validation-for="User" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -34,13 +33,17 @@
                 <div class="form-group">
                     <label asp-for="IssueType"></label>
                     @*<input asp-for="IssueTypeId" class="form-control" readonly />*@
-                    <select class="form-control" asp-for="IssueType" asp-items="ViewBag.IssueTypesSL"></select>
+                    <select class="form-control" asp-for="IssueType" asp-items="ViewBag.IssueTypesSL">
+                        <option value="">Выберите тип Запроса</option>
+                    </select>
                     <span asp-validation-for="IssueType" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Category"></label>
                     @*<input asp-for="CategoryId" class="form-control" readonly />*@
-                    <select class="form-control" asp-for="Category" asp-items="ViewBag.IssueGategoriesSL"></select>
+                <select class="form-control" asp-for="Category" asp-items="ViewBag.IssueGategoriesSL">
+                    <option value="">Выберите Категорию Запроса</option>
+                </select>
                     <span asp-validation-for="Category" class="text-danger"></span>
                 </div>
                 <div class="form-group">

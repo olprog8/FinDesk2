@@ -9,6 +9,14 @@
     <Compile Remove="Migrations\20210117181211_SimpleIssues.Designer.cs" />
     <Compile Remove="Migrations\20210117183430_SimpleIssues2.cs" />
     <Compile Remove="Migrations\20210117183430_SimpleIssues2.Designer.cs" />
+    <Compile Remove="Migrations\20210118094136_Add^NamedDictEntity.cs" />
+    <Compile Remove="Migrations\20210118094136_Add^NamedDictEntity.Designer.cs" />
+    <Compile Remove="Migrations\20210118095014_Add^NamedDictEntity.cs" />
+    <Compile Remove="Migrations\20210118095014_Add^NamedDictEntity.Designer.cs" />
+    <Compile Remove="Migrations\20210118095323_Add^NamedDictEntity.cs" />
+    <Compile Remove="Migrations\20210118095323_Add^NamedDictEntity.Designer.cs" />
+    <Compile Remove="Migrations\20210118102334_Add^NamedDictEntity.cs" />
+    <Compile Remove="Migrations\20210118102334_Add^NamedDictEntity.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

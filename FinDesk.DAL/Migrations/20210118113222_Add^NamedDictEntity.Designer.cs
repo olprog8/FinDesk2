@@ -4,14 +4,16 @@ using FinDesk.DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FinDesk.DAL.Migrations
 {
     [DbContext(typeof(FinDeskDB))]
-    partial class FinDeskDBModelSnapshot : ModelSnapshot
+    [Migration("20210118113222_Add^NamedDictEntity")]
+    partial class AddNamedDictEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

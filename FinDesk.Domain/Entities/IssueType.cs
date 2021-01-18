@@ -7,7 +7,7 @@ using FinDesk.Domain.Entities.Base;
 
 namespace FinDesk.Domain.Entities
 {
-    public class IssueType: NamedEntity, IOrderedEntity
+    public class IssueType: NamedDictEntity, IOrderedEntity
     {
         public int Order { get; set; }
 
