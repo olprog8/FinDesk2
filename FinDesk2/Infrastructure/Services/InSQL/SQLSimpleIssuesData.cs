@@ -30,7 +30,7 @@ namespace FinDesk2.Infrastructure.Services.InSQL
                 //ПШ L8 1.45 Формируем новый заказ
                 var simpleIssue = new SimpleIssue
                 {
-                    User = "TheUser",
+                    User = SimpleIssue.User,
                     IssueTS = SimpleIssue.IssueTS,
                     IssueType = SimpleIssue.IssueType,
                     Category = SimpleIssue.Category,

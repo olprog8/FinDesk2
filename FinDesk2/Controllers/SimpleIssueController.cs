@@ -47,7 +47,7 @@ namespace FinDesk2.Controllers
             issueViewModel.IssueTS = DateTime.Now;
 
             var issueTypes = _BaseIssuesData.GetIssueTypes().ToArray();
-            ViewBag.IssueTypesSL = new SelectList(issueTypes, "Name", "Name");
+            ViewBag.IssueTypesSL = new SelectList(issueTypes, "Name", "Descr01");
 
             var issueCategories = _BaseIssuesData.GetCategories().Where(c => c.ParentCategory != null).ToArray();
             ViewBag.IssueGategoriesSL = new SelectList(issueCategories, "Name", "Name");

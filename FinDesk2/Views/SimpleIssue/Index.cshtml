@@ -22,6 +22,7 @@
                 <tr>
                     <td>Id</td>
                     <td>Дата создания</td>
+                    <td>Статус</td>
                     <td>Заявитель</td>
                     <td>Тип Запроса</td>
                     <td>Категория</td>
@@ -38,27 +39,28 @@
             <tbody>
                 @foreach (var issue in Model)
                 {
-                    <tr>
-                        <td>@issue.Id</td>
-                        <td>@issue.IssueTS</td>
-                        <td>@issue.User</td>
-                        <td>@issue.IssueType</td>
-                        <td>@issue.Category</td>
-                        <td>@issue.LongDescr</td>
-                        <td>
-                            <a asp-controller="SimpleIssue" asp-action="Details" asp-route-id="@issue.Id">Details</a>
-                        </td>
-                        @if (User.IsInRole(FinDesk.Domain.Identity.Role.Administrator))
-                        {
+                <tr>
+                    <td>@issue.Id</td>
+                    <td>@issue.IssueTS</td>
+                    <td>@issue.IssueStatus</td>
+                    <td>@issue.User</td>
+                    <td>@issue.IssueType</td>
+                    <td>@issue.Category</td>
+                    <td>@issue.LongDescr</td>
+                    <td>
+                        <a asp-controller="SimpleIssue" asp-action="Details" asp-route-id="@issue.Id">Details</a>
+                    </td>
+                    @if (User.IsInRole(FinDesk.Domain.Identity.Role.Administrator))
+                    {
 
-                            <td>
-                                <a asp-controller="SimpleIssue" asp-action="Edit" asp-route-id="@issue.Id">Edit</a>
-                            </td>
-                            <td>
-                                <a asp-controller="SimpleIssue" asp-action="Delete" asp-route-id="@issue.Id" class="text-danger">Delete</a>
-                            </td>
-                        }
-                    </tr>
+                        <td>
+                            <a asp-controller="SimpleIssue" asp-action="Edit" asp-route-id="@issue.Id">Edit</a>
+                        </td>
+                        <td>
+                            <a asp-controller="SimpleIssue" asp-action="Delete" asp-route-id="@issue.Id" class="text-danger">Delete</a>
+                        </td>
+                    }
+                </tr>
                 }
             </tbody>
         </table>
