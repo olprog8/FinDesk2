@@ -41,7 +41,7 @@ namespace FinDesk2.Data
             await db.MigrateAsync().ConfigureAwait(false);
 
             //!!!Запускаем только при первом созданнии базы
-            //            await InitializeIdentityAsync().ConfigureAwait(false);
+            //             await InitializeIdentityAsync().ConfigureAwait(false);
 
             await InitializeSimpleIssuesAsync().ConfigureAwait(false);
 
@@ -52,6 +52,42 @@ namespace FinDesk2.Data
             if (await _db.SimpleIssues.AnyAsync()) return;
 
             var db = _db.Database;
+
+            using (var transaction = await db.BeginTransactionAsync().ConfigureAwait(false))
+            {
+                await _db.Categories.AddRangeAsync(TestData.Categories).ConfigureAwait(false);
+
+                //В один момент времени в состоянии с выключенным ID может находиться одна таблица
+                await db.ExecuteSqlRawAsync("SET IDENTITY_INSERT [dbo].[Categories] ON");
+                await _db.SaveChangesAsync().ConfigureAwait(false);
+                await db.ExecuteSqlRawAsync("SET IDENTITY_INSERT [dbo].[Categories] OFF");
+
+                await transaction.CommitAsync().ConfigureAwait(false);
+            }
+
+            using (var transaction = await db.BeginTransactionAsync().ConfigureAwait(false))
+            {
+                await _db.IssueStatuses.AddRangeAsync(TestData.IssueStatuses).ConfigureAwait(false);
+
+                //В один момент времени в состоянии с выключенным ID может находиться одна таблица
+                await db.ExecuteSqlRawAsync("SET IDENTITY_INSERT [dbo].[IssueStatuses] ON");
+                await _db.SaveChangesAsync().ConfigureAwait(false);
+                await db.ExecuteSqlRawAsync("SET IDENTITY_INSERT [dbo].[IssueStatuses] OFF");
+
+                await transaction.CommitAsync().ConfigureAwait(false);
+            }
+
+            using (var transaction = await db.BeginTransactionAsync().ConfigureAwait(false))
+            {
+                await _db.IssueTypes.AddRangeAsync(TestData.IssueTypes).ConfigureAwait(false);
+
+                //В один момент времени в состоянии с выключенным ID может находиться одна таблица
+                await db.ExecuteSqlRawAsync("SET IDENTITY_INSERT [dbo].[IssueTypes] ON");
+                await _db.SaveChangesAsync().ConfigureAwait(false);
+                await db.ExecuteSqlRawAsync("SET IDENTITY_INSERT [dbo].[IssueTypes] OFF");
+
+                await transaction.CommitAsync().ConfigureAwait(false);
+            }
 
             using (var transaction = await db.BeginTransactionAsync().ConfigureAwait(false))
             {

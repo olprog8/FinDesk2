@@ -99,12 +99,21 @@ namespace FinDesk2.Data
         };
         public static IEnumerable<Category> Categories { get; } = new[]
             {
-            new Category{Id = 1, Name = "1C", Order = 0},
-            new Category{Id = 2, Name = "InforSystems", Order = 1},
+            new Category{Id = 1, Name = "InforSystems", Order = 0},
+            new Category{Id = 2, Name = "1C", Order = 1},
             new Category{Id = 3, Name = "Other", Order = 2},
-            new Category{Id = 4, Name = "1CCash", Order = 3, ParentId = 1 },
-            new Category{Id = 5, Name = "Vision", Order = 4, ParentId = 2 },
-            new Category{Id = 6, Name = "Vision", Order = 5, ParentId = 2 },
+            new Category{Id = 4, Name = "SunSystems 6.X", Order = 3},
+            new Category{Id = 5, Name = "Vision", Order = 4},
+            new Category{Id = 6, Name = "Collect", Order = 5},
+            new Category{Id = 7, Name = "1C Cash", Order = 6, ParentId = 2 },
+            new Category{Id = 8, Name = "1C Trade Exp", Order = 7, ParentId = 2 },
+            new Category{Id = 9, Name = "1C Trade Int", Order = 8, ParentId = 2 },
+            new Category{Id = 10, Name = "1C DutyBilling Exp", Order = 9, ParentId = 2 },
+            new Category{Id = 11, Name = "1C DutyBilling Int", Order = 10, ParentId = 2 },
+            new Category{Id = 12, Name = "1C Edo Clients", Order = 11, ParentId = 2 },
+            new Category{Id = 13, Name = "1C Edo Suppliers", Order = 12, ParentId = 2 },
+            new Category{Id = 14, Name = "Excel Macro", Order = 13, ParentId = 3 },
+
             };
 
         public static IEnumerable<IssueStatus> IssueStatuses { get; } = new[]
@@ -117,9 +126,9 @@ namespace FinDesk2.Data
 
         public static IEnumerable<IssueType> IssueTypes { get; } = new[]
             {
-            new IssueType{Id = 1, Name = "Bug", Order = 0 },
-            new IssueType{Id = 2, Name = "Task", Order = 1 },
-            new IssueType{Id = 3, Name = "Project", Order = 2 },
+            new IssueType{Id = 1, Name = "Bug", Order = 0, NameRus="Проблема", ChangeUser="Admin", ChangeDt= DateTime.Now, Descr01="Bug (Проблема)"},
+            new IssueType{Id = 2, Name = "Change", Order = 1, NameRus="Изменение", ChangeUser="Admin", ChangeDt= DateTime.Now, Descr01="Change (Изменение)"},
+            new IssueType{Id = 3, Name = "Project", Order = 2, NameRus="Проект", ChangeUser="Admin", ChangeDt= DateTime.Now, Descr01="Project (Проект)"},
             };
 
 
@@ -128,7 +137,7 @@ namespace FinDesk2.Data
             new SimpleIssue
             {
                 Id = 1,
-                User = "arianov",
+                User = "arivanov",
                 IssueTS = DateTime.Now.AddDays(-10).AddHours(-1).AddMinutes(-10),
                 IssueType="Bug",
                 Category="",
@@ -139,7 +148,7 @@ namespace FinDesk2.Data
             new SimpleIssue
             {
                 Id = 2,
-                User = "elukashina",
+                User = "elukashi",
                 IssueTS = DateTime.Now.AddDays(-8).AddHours(-2).AddMinutes(-5),
                 IssueType="Task",
                 Category="",

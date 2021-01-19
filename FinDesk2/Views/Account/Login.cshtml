@@ -28,7 +28,7 @@
                 </div><!--/login form-->
             </div>
             <div class="col-sm-1">
-                <h2 class="or">OR</h2>
+                <h2 class="or">ИЛИ</h2>
             </div>
             <div class="col-sm-4">
                 <div class="signup-form">
@@ -39,6 +39,9 @@
 
                         <input asp-for="UserName" placeholder="Имя пользователя" />
                         <span asp-validation-for="UserName" class="text-danger"></span>
+
+                        <input asp-for="Email" placeholder="Корпоративная почта" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
 
                         <input asp-for="Password" placeholder="Пароль" />
                         <span asp-validation-for="Password" class="text-danger"></span>

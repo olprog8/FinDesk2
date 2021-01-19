@@ -15,6 +15,11 @@ namespace FinDesk2.ViewModels.Identity
         [Display(Name = "Имя пользователя")]
         public string UserName { get; set; }
 
+        [MaxLength(256)]
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "Корпоративная почта")]
+        public string Email { get; set; }
+
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Пароль")]

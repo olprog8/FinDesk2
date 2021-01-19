@@ -40,7 +40,7 @@ namespace FinDesk2.Controllers
             return View(issue.ToViewModel());
         }
 
-        [Authorize(Roles = Role.Administrator)]
+        [Authorize(Roles = "Administrators,Users")]
         public IActionResult Create()
         {
             var issueViewModel = new SimpleIssueViewModel();
@@ -59,7 +59,8 @@ namespace FinDesk2.Controllers
 
         }
 
-        [Authorize(Roles = Role.Administrator)]
+        //[Authorize(Roles = Role.Administrator)]
+        [Authorize(Roles = "Administrators,Users")]
         [HttpPost, ValidateAntiForgeryToken]
         public IActionResult Create(SimpleIssueViewModel SimpleIssue)
         {
@@ -90,7 +91,7 @@ namespace FinDesk2.Controllers
                 return NotFound();
 
             var issueTypes = _BaseIssuesData.GetIssueTypes().ToArray();
-            ViewBag.IssueTypesSL = new SelectList(issueTypes, "Name", "Name");
+            ViewBag.IssueTypesSL = new SelectList(issueTypes, "Name", "Descr01");
 
             var issueCategories = _BaseIssuesData.GetCategories().Where(c => c.ParentCategory != null).ToArray();
             ViewBag.IssueGategoriesSL = new SelectList(issueCategories, "Name", "Name");
