@@ -13,6 +13,7 @@ using FinDesk.DAL.Context;
 using FinDesk2.Data;
 
 using FinDesk2.Infrastructure.Services.InSQL;
+using FinDesk2.Infrastructure.Services.InMemory;
 
 using FinDesk.Domain.Identity;
 using Microsoft.AspNetCore.Identity;
@@ -83,6 +84,8 @@ namespace FinDesk2
 
             //services.AddSingleton<IBaseIssuesData, InMemoryBaseIssuesData>();
             services.AddScoped<IBaseIssuesData, SQLBaseIssuesData>();
+
+            services.AddScoped<IIssuesMail, InMemoryIssuesMail>();
 
 
         }

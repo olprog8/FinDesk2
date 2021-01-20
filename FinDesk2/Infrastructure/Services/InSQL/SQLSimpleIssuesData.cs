@@ -13,7 +13,6 @@ using FinDesk.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 
-
 namespace FinDesk2.Infrastructure.Services.InSQL
 {
     public class SQLSimpleIssuesData : ISimpleIssuesData
@@ -22,9 +21,11 @@ namespace FinDesk2.Infrastructure.Services.InSQL
 
         public SQLSimpleIssuesData(FinDeskDB db) => _db = db;
 
-
-        public void Add(SimpleIssue SimpleIssue)
+        
+        public int Add(SimpleIssue SimpleIssue)
         {
+            int NewId = -1;
+
             using (var transaction = _db.Database.BeginTransaction())
             {
                 //ПШ L8 1.45 Формируем новый заказ
@@ -42,8 +43,14 @@ namespace FinDesk2.Infrastructure.Services.InSQL
                 _db.SimpleIssues.Add(simpleIssue);
 
                 _db.SaveChanges();
+
+                _db.Entry(simpleIssue).GetDatabaseValues();
+
+                NewId = simpleIssue.Id;
+
                 transaction.CommitAsync();
 
+                return NewId;
             }
         }
             public bool Delete(int id)

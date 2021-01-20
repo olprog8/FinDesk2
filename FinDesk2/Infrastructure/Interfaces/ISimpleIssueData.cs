@@ -14,7 +14,7 @@ namespace FinDesk2.Infrastructure.Interfaces
 
         SimpleIssue GetById(int id);
 
-        void Add(SimpleIssue Issue);
+        int Add(SimpleIssue Issue);
 
         void Edit(int id, SimpleIssue Issue);
 

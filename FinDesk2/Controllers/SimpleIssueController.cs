@@ -21,11 +21,13 @@ namespace FinDesk2.Controllers
     {
         private readonly ISimpleIssuesData _IssuesData;
         private readonly IBaseIssuesData _BaseIssuesData;
+        private readonly IIssuesMail _issuesMail;
 
-        public SimpleIssueController(ISimpleIssuesData IssuesData, IBaseIssuesData BaseIssueData)
+        public SimpleIssueController(ISimpleIssuesData IssuesData, IBaseIssuesData BaseIssueData, IIssuesMail issuesMail)
         {
             _IssuesData = IssuesData;
             _BaseIssuesData = BaseIssueData;
+            _issuesMail = issuesMail;
         }
 
         public IActionResult Index() => View(_IssuesData.GetAll().Select(e => e.ToViewModel()));
@@ -68,10 +70,24 @@ namespace FinDesk2.Controllers
                 throw new ArgumentNullException(nameof(SimpleIssue));
 
             if (!ModelState.IsValid)
-                return View(SimpleIssue);
+            {
 
-            _IssuesData.Add(SimpleIssue.ToModel());
-            _IssuesData.SaveChanges();
+                var issueTypes = _BaseIssuesData.GetIssueTypes().ToArray();
+                ViewBag.IssueTypesSL = new SelectList(issueTypes, "Name", "Descr01");
+
+                var issueCategories = _BaseIssuesData.GetCategories().Where(c => c.ParentCategory != null).ToArray();
+                ViewBag.IssueGategoriesSL = new SelectList(issueCategories, "Name", "Name");
+
+                var issueStatuses = _BaseIssuesData.GetIssueStatuses().ToArray();
+                ViewBag.IssueStatusesSL = new SelectList(issueStatuses, "Name", "Name");
+                
+                return View(SimpleIssue);
+            }
+
+
+            var NewId = _IssuesData.Add(SimpleIssue.ToModel());
+
+            var result = _issuesMail.SendMailById(SimpleIssue.ToMailViewModel(), NewId);
 
             return RedirectToAction("Index");
 
@@ -98,6 +114,8 @@ namespace FinDesk2.Controllers
 
             var issueStatuses = _BaseIssuesData.GetIssueStatuses().ToArray();
             ViewBag.IssueStatusesSL = new SelectList(issueStatuses, "Name", "Name");
+
+
 
             return View(issue.ToViewModel());
         }
