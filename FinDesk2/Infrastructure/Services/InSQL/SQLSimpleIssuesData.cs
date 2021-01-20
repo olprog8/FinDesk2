@@ -32,6 +32,7 @@ namespace FinDesk2.Infrastructure.Services.InSQL
                 {
                     User = SimpleIssue.User,
                     IssueTS = SimpleIssue.IssueTS,
+                    IssueStatus = SimpleIssue.IssueStatus,
                     IssueType = SimpleIssue.IssueType,
                     Category = SimpleIssue.Category,
                     LongDescr = SimpleIssue.LongDescr,

@@ -10,29 +10,29 @@
 
         @if (User.IsInRole(FinDesk.Domain.Identity.Role.Administrator))
         {
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            @*<div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <a asp-action="Create" class="btn btn-success">Создать</a>
-            </div>
+            </div>*@
             @*<a asp-action="Edit" class="btn btn-success">Создать через Edit</a>*@
             
         }
 
         <table class="table table-bordered" id="st_issue_table">
-            <thead>
+            <thead class="thead-dark">
                 <tr>
-                    <td>Id</td>
-                    <td>Дата создания</td>
-                    <td>Статус</td>
-                    <td>Заявитель</td>
-                    <td>Тип Запроса</td>
-                    <td>Категория</td>
-                    <td>Описание Запроса</td>
-                    <td>Детали</td>
+                    <th>Id</th>
+                    <th>Дата создания</th>
+                    <th>Статус</th>
+                    <th>Заявитель</th>
+                    <th>Тип Запроса</th>
+                    <th>Категория</th>
+                    <th>Описание Запроса</th>
+                    <th>Детали</th>
 
                     @if (User.IsInRole(FinDesk.Domain.Identity.Role.Administrator))
                     {
-                        <td>Редактировать</td>
-                        <td>Удалить</td>
+                        <th>Редактировать</th>
+                        <th>Удалить</th>
                     }
                 </tr>
             </thead>
@@ -69,7 +69,8 @@
 @section Styles{
     <style>
         #st_issue_table {
-            background: yellow;
+            width: auto;
+            background: BlanchedAlmond;
         }
     </style>
 }

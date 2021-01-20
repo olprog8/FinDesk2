@@ -37,8 +37,9 @@ namespace WebStore1p.Controllers
             //ПШ L6 Если всё ок,создаем пользвателя
             var user = new User
             {
-                UserName = Model.UserName
-
+                UserName = Model.UserName,
+                Email = Model.Email
+                
             };
 
             //ПШ L6 Обращаемся к менеджеру пользователей, но регистрация может пройти успешно, а может неуспешно

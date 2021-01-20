@@ -25,5 +25,11 @@ namespace FinDesk2.ViewModels.Identity
         [Compare(nameof(Password))] //!!! Ссылка на поле текущего класса
         public string ConfirmPassword { get; set; }
 
+        [Required]
+        [MaxLength(256)]
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "Корпоративная почта")]
+        public string Email { get; set; }
+
     }
 }
