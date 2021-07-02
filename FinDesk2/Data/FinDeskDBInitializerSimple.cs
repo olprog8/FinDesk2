@@ -40,8 +40,8 @@ namespace FinDesk2.Data
 
             await db.MigrateAsync().ConfigureAwait(false);
 
-            //!!!Запускаем только при первом созданнии базы
-            //             await InitializeIdentityAsync().ConfigureAwait(false);
+            //Инициализация данных в БД
+            await InitializeIdentityAsync().ConfigureAwait(false);
 
             await InitializeSimpleIssuesAsync().ConfigureAwait(false);
 
@@ -114,7 +114,7 @@ namespace FinDesk2.Data
             if (!await _RoleManager.RoleExistsAsync(Role.User))
                 await _RoleManager.CreateAsync(new Role { Name = Role.User });
 
-            if (await _UserManager.FindByEmailAsync(User.Administrator) is null)
+            if (await _UserManager.FindByNameAsync(User.Administrator) is null)
             {
                 var admin = new User
                 {
